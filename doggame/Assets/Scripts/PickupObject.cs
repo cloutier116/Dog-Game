@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PickupObject : Object {
-	public virtual string getType(){
-
-		}
+	public override Object.type getType(){
+		return Object.type.TYPE_PICKUP;
+	}
 }
