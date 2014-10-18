@@ -25,6 +25,8 @@ public class Interact : MonoBehaviour {
 					#if debugMode
 					Debug.Log ("Interactive object is in range");
 					#endif
+					GameObject target = hitColliders[i].gameObject.GetComponent<Object>();
+
 				}
 				i++;
 			}
