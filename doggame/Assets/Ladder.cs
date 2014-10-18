@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Ladder : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
+	void OnTriggerEnter(Collider c){
+		if (c.tag == "Player") { //let him use the ladder
+					//disable gravity
+				}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void OnTriggerExit(Collider c){
+		if (c.tag == "Player") { //let him use the ladder
+					//enable gravity
+				}
 	}
 }

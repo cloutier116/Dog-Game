@@ -6,7 +6,8 @@ public class Interact : MonoBehaviour {
 	private Transform myTransform;
 	public GameObject holding; //gameobject the player is currently holding
 	public float radius = 5.0f;
-	
+	public AudioClip bark;
+
 	// Use this for initialization
 	void Start () {
 		myTransform = GetComponent<Transform> ();
@@ -14,6 +15,11 @@ public class Interact : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyUp (KeyCode.B)) {
+			//bark
+			audio.PlayOneShot(bark, 0.7f);
+				}
+
 		if (Input.GetKeyUp (KeyCode.G)) {
 			if(holding != null){
 				holding.GetComponent<Transform>().parent = null;
