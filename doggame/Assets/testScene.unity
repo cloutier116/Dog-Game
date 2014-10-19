@@ -279,7 +279,9 @@ Prefab:
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+    - {fileID: 11400000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
   m_RootGameObject: {fileID: 213568850}
   m_IsPrefabParent: 0
@@ -322,10 +324,9 @@ GameObject:
   - 4: {fileID: 213568851}
   - 111: {fileID: 213568855}
   - 143: {fileID: 213568854}
-  - 114: {fileID: 213568853}
-  - 114: {fileID: 213568852}
   - 114: {fileID: 213568856}
   - 82: {fileID: 213568857}
+  - 114: {fileID: 213568852}
   m_Layer: 0
   m_Name: 3rd Person Controller
   m_TagString: Player
@@ -345,61 +346,29 @@ Transform:
   m_Children:
   - {fileID: 741200974}
   - {fileID: 717582320}
+  - {fileID: 815824701}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &213568852
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 134642310}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 213568850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b167d00b3108411a8a963cba5ddde1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 09e0b627631f53547876d9129e64d0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  distance: 3
-  height: 1
-  angularSmoothLag: .100000001
-  angularMaxSpeed: 175
-  heightSmoothLag: .300000012
-  snapSmoothLag: .200000003
-  snapMaxSpeed: 720
-  clampHeadPositionScreenSpace: .75
-  lockCameraTimeout: .200000003
---- !u!114 &213568853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 2314ce3a3eecf4816bad3c9eca4de2e1,
-    type: 2}
-  m_PrefabInternal: {fileID: 134642310}
-  m_GameObject: {fileID: 213568850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d5ac211a643e447ca78c2d794a16381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleAnimation: {fileID: 7400002, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
-  walkAnimation: {fileID: 7400008, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
-  runAnimation: {fileID: 7400004, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
-  jumpPoseAnimation: {fileID: 7400010, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
-  walkMaxAnimationSpeed: .899999976
-  trotMaxAnimationSpeed: 1.29999995
-  runMaxAnimationSpeed: .899999976
-  jumpAnimationSpeed: 1.14999998
-  landAnimationSpeed: 1
-  walkSpeed: 3
-  trotSpeed: 4
-  runSpeed: 8
-  inAirControlAcceleration: 3
-  jumpHeight: 1
+  idleAnimation: {fileID: 0}
+  runAnimation: {fileID: 0}
+  jumpAnimation: {fileID: 0}
+  runSpeed: 7.75
+  jumpHeight: .5
+  jumpSpeed: 8
   gravity: 20
-  speedSmoothing: 10
-  rotateSpeed: 500
-  trotAfterSeconds: 2
-  canJump: 1
+  climbing: 0
+  _characterState: 0
 --- !u!143 &213568854
 CharacterController:
   m_ObjectHideFlags: 0
@@ -610,7 +579,7 @@ GameObject:
   - 114: {fileID: 421779539}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -677,7 +646,7 @@ Transform:
   m_LocalScale: {x: 5, y: 50, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &429462161
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +908,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &717582319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,11 +1129,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815824696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: .761200011, z: -2.6724}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 213568851}
+  m_RootOrder: 2
 --- !u!1 &870259598
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,7 +1418,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &981912853
 GameObject:
   m_ObjectHideFlags: 0
