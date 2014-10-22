@@ -38,8 +38,6 @@ public class PlatformerController : MonoBehaviour {
 	}
 	
 	void Update() {
-
-		
 		vertical = Input.GetAxis ("Vertical");
 		Debug.Log ("vertical: "+ vertical *Time.deltaTime);
 		if(vertical > 0){

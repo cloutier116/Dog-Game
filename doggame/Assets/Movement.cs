@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour {
 	public bool[] directions = new bool[] {false, false, false, false};
 									//     forward, back, left, right
 	public float maxVel = 10f;
-	bool climbing;
+	public bool climbing;
 	public Transform tr;
 
 	// Use this for initialization
