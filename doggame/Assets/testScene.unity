@@ -279,6 +279,14 @@ Prefab:
       propertyPath: m_DirtyAABB
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400014, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400010, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400002, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
     - {fileID: 11400000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
@@ -346,6 +354,7 @@ Transform:
   m_LocalPosition: {x: 1.38689995, y: 3.41079998, z: -6.28490019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 667047623}
   - {fileID: 741200974}
   - {fileID: 717582320}
   m_Father: {fileID: 0}
@@ -617,7 +626,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: aa130c45a1b4b564ea01fafa6790cedb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -652,8 +661,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421779538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.92799997, y: 1.77530003, z: .340240002}
-  m_LocalScale: {x: 5, y: 50, z: 5}
+  m_LocalPosition: {x: 7.92799997, y: 19.5839996, z: .340240002}
+  m_LocalScale: {x: 5, y: 20, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -919,6 +928,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 981912854}
   m_RootOrder: 0
+--- !u!1 &667047622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 667047623}
+  m_Layer: 0
+  m_Name: Camera Target
+  m_TagString: CameraTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &667047623
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 667047622}
+  m_LocalRotation: {x: .241268918, y: 0, z: 0, w: .970458329}
+  m_LocalPosition: {x: 0, y: 1.11210001, z: -2.52399993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 213568851}
+  m_RootOrder: 0
 --- !u!1 &667715669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1050,7 @@ Transform:
   m_LocalScale: {x: 1.96534526, y: 1.96534491, z: 1.96534491}
   m_Children: []
   m_Father: {fileID: 213568851}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &719771292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1106,7 @@ Transform:
   m_Children:
   - {fileID: 1231085372}
   m_Father: {fileID: 213568851}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &764838887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,6 +1177,7 @@ GameObject:
   - 92: {fileID: 815824699}
   - 124: {fileID: 815824698}
   - 81: {fileID: 815824697}
+  - 114: {fileID: 815824702}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1207,12 +1244,24 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 815824696}
-  m_LocalRotation: {x: -.153477326, y: .712152421, z: -.164350912, w: -.665035725}
-  m_LocalPosition: {x: 25.8061905, y: 8.78132343, z: -3.66297913}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.38689995, y: 4.23174, z: -8.17350006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &815824702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815824696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809d5f42944b06e45af71cbb0a9678f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameObject_target: {fileID: 667047622}
 --- !u!1 &870259598
 GameObject:
   m_ObjectHideFlags: 0
