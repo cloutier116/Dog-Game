@@ -25,9 +25,9 @@ public class Movement : MonoBehaviour {
 			velocity.z -= accel;
 		else
 		{
-			if(velocity.z < accel/2 || velocity.z > -accel/2)
-				velocity.z = 0;
-			else if(velocity.z > 0)
+			//if(velocity.z < accel/12 || velocity.z > -accel/12)
+			//	velocity.z = 0;
+			if(velocity.z > 0)
 				velocity.z -= accel/2;
 			else if(velocity.z < 0)
 				velocity.z += accel/2;
@@ -38,9 +38,9 @@ public class Movement : MonoBehaviour {
 			velocity.x += accel;
 		else
 		{
-			if(velocity.x < accel/2 || velocity.x > -accel/2)
-				velocity.x = 0;
-			else if(velocity.x > 0)
+			//if(velocity.x < accel/4 || velocity.x > -accel/4)
+			//	velocity.x = 0;
+			if(velocity.x > 0)
 				velocity.x -= accel/2;
 			else if(velocity.x < 0)
 				velocity.x += accel/2;
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour {
 		velocity = Vector3.ClampMagnitude (velocity, maxVel);
 
 		tr.LookAt (tr.position + velocity);
-		transform.Translate (0, 0, velocity.magnitude);
+		transform.Translate (velocity.magnitude * Vector3.forward);
 	}
 
 	void getInput()
@@ -65,6 +65,9 @@ public class Movement : MonoBehaviour {
 			directions [2] = true;
 		else if (Input.GetAxis ("Horizontal") > 0)
 			directions [3] = true;
+
+		if (Input.GetButton ("Jump"))
+
 		return;
 	}
 }
