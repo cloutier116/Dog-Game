@@ -7,7 +7,8 @@ public class PlatformerController : MonoBehaviour {
 	public AnimationClip jumpAnimation;
 
 	public float maxRunSpeed = 3.75f;
-	private Vector3 runSpeed = new Vector3(0.0f,0.0f,0.0f);
+	private float verticalRunSpeed = 0.0f;
+	private float horizontalRunSpeed = 0.0f;
 
 	public float jumpHeight = 0.5f;
 	public float jumpSpeed = 8.0f;
@@ -20,12 +21,10 @@ public class PlatformerController : MonoBehaviour {
 	CharacterController controller;
 	Transform _transform;
 
-	private Vector3 moveDirection;
+	private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotateDirection = Vector3.zero;
 
 	public CharacterState _characterState;
-
-	bool onGround = true;
 
 	public enum CharacterState{
 		Idle = 0,
@@ -36,42 +35,40 @@ public class PlatformerController : MonoBehaviour {
 	void Start () {
 		controller = GetComponent<CharacterController> ();
 		_transform = GetComponent<Transform> ();
-		moveDirection = new Vector3(0, -gravity, 0);
 	}
 	
 	void Update() {
 
 		
 		vertical = Input.GetAxis ("Vertical");
-		//Debug.Log ("vertical: "+ vertical *Time.deltaTime);
+		Debug.Log ("vertical: "+ vertical *Time.deltaTime);
 		if(vertical > 0){
-			runSpeed.x += vertical * Time.deltaTime*1.5f;
+			verticalRunSpeed += Time.deltaTime*1.5f;
 		}
 		else if(vertical <0){
-			runSpeed.x -= -vertical * Time.deltaTime*1.5f;
+			verticalRunSpeed -= Time.deltaTime*1.5f;
 		}
 		else if(vertical == 0){
-			if(runSpeed.x > 0)
-				runSpeed.x -= Time.deltaTime*1.5f;
-			else if(runSpeed.x < 0)
-				runSpeed.x += Time.deltaTime*1.5f;
+			verticalRunSpeed *= 0.5f;
+		}
+		if(verticalRunSpeed > maxRunSpeed || verticalRunSpeed < -maxRunSpeed){
+			verticalRunSpeed = maxRunSpeed;
 		}
 
 		horizontal = Input.GetAxis ("Horizontal");
+		Debug.Log ("horizontal: "+ horizontal *Time.deltaTime);
 		if(horizontal > 0){
-			runSpeed.z += horizontal * Time.deltaTime*1.5f;
+			horizontalRunSpeed += Time.deltaTime*1.5f;
 		}
 		else if(horizontal <0){
-			runSpeed.z -= horizontal * Time.deltaTime*1.5f;
+			horizontalRunSpeed -= Time.deltaTime*1.5f;
 		}
 		else if(horizontal == 0){
-			if(runSpeed.z > 0)
-				runSpeed.z -= Time.deltaTime*1.5f;
-			else if(runSpeed.z < 0)
-				runSpeed.z += Time.deltaTime*1.5f;
+			horizontalRunSpeed *= 0.5f;
 		}
-
-		runSpeed = Vector3.ClampMagnitude (runSpeed, maxRunSpeed);
+		if(horizontalRunSpeed > maxRunSpeed || horizontalRunSpeed < -maxRunSpeed){
+			horizontalRunSpeed = maxRunSpeed;
+		}
 
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
 			Collider[] hitColliders = Physics.OverlapSphere (_transform.position, 10.0f);
@@ -97,31 +94,42 @@ public class PlatformerController : MonoBehaviour {
 				controller.Move (moveDirection * Time.deltaTime);
 		}
 		else{
-			if (onGround) {
-				/*float horizontal = Input.GetAxis ("Horizontal");
-				Debug.Log ("runSpeed:" + runSpeed);
-				if(runSpeed < 0){
-					moveDirection = new Vector3 (0, 0, -runSpeed*Time.deltaTime*100.0f);
+			if (controller.isGrounded) {
+				float rotation = Input.GetAxis ("PlayerRotation");
+				Debug.Log ("verticalRunSpeed:" + verticalRunSpeed);
+				Debug.Log ("horizontalRunSpeed:" + horizontalRunSpeed);
+				
+				int verticalModifier = 1;
+				if(verticalRunSpeed < 0){
+					verticalModifier = -1;
 				}
-				else{
-					moveDirection = new Vector3 (0, 0, runSpeed*Time.deltaTime*100.0f);
+				else if(verticalRunSpeed >0){
+					verticalModifier = 1;
 				}
-				rotateDirection = new Vector3(0,horizontal*Time.deltaTime*100.0f,0);
-				*/
-				//rotate
-				transform.LookAt(new Vector3(moveDirection.x, transform.position.y, moveDirection.z));
-				/*Vector3 relative = transform.InverseTransformPoint (transform.position + moveDirection);
-				float angle = Mathf.Atan2 (relative.x, relative.z) * Mathf.Rad2Deg;
-				transform.Rotate (0, 0, -angle);*/
-				//transform.Rotate(rotateDirection);
+				
+				int horizontalModifier = 1;
+				if(horizontalRunSpeed < 0){
+					horizontalModifier = -1;
+				}
+				else if(horizontalRunSpeed >0){
+					horizontalModifier = 1;
+				}
 
-				moveDirection.x = runSpeed.x;
-				moveDirection.z = runSpeed.z;
-				//print (moveDirection);
+				moveDirection = new Vector3 (horizontalModifier*horizontalRunSpeed*Time.deltaTime*100.0f, 0, verticalModifier*verticalRunSpeed*Time.deltaTime*100.0f);
+				
+
+				rotateDirection = new Vector3(0,rotation*Time.deltaTime*100.0f,0);
+				
+				//rotate
+				transform.Rotate(rotateDirection);
+
+				moveDirection = transform.TransformDirection (moveDirection);
+				moveDirection *= (verticalRunSpeed + horizontalRunSpeed);
 				if (Input.GetButton ("Jump"))
 					moveDirection.y = jumpSpeed;
 			}
-			transform.Translate(runSpeed);
+			moveDirection.y -= gravity * Time.deltaTime;
+			controller.Move (moveDirection * Time.deltaTime);
 		}
 	}
 }
