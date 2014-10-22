@@ -7,13 +7,15 @@ public class PlatformerController : MonoBehaviour {
 	public AnimationClip jumpAnimation;
 
 	public float maxRunSpeed = 3.75f;
-	private float runSpeed = 0.0f;
+	private float verticalRunSpeed = 0.0f;
+	private float horizontalRunSpeed = 0.0f;
 
 	public float jumpHeight = 0.5f;
 	public float jumpSpeed = 8.0f;
 	public float gravity = 20.0f;
 
 	private float vertical = 0.0f;
+	private float horizontal = 0.0f;
 
 	public bool climbing = false;
 	CharacterController controller;
@@ -41,16 +43,31 @@ public class PlatformerController : MonoBehaviour {
 		vertical = Input.GetAxis ("Vertical");
 		Debug.Log ("vertical: "+ vertical *Time.deltaTime);
 		if(vertical > 0){
-			runSpeed += Time.deltaTime*1.5f;
+			verticalRunSpeed += Time.deltaTime*1.5f;
 		}
 		else if(vertical <0){
-			runSpeed -= Time.deltaTime*1.5f;
+			verticalRunSpeed -= Time.deltaTime*1.5f;
 		}
 		else if(vertical == 0){
-			runSpeed *= 0.5f;
+			verticalRunSpeed *= 0.5f;
 		}
-		if(runSpeed > maxRunSpeed || runSpeed < -maxRunSpeed){
-			runSpeed = maxRunSpeed;
+		if(verticalRunSpeed > maxRunSpeed || verticalRunSpeed < -maxRunSpeed){
+			verticalRunSpeed = maxRunSpeed;
+		}
+
+		horizontal = Input.GetAxis ("Horizontal");
+		Debug.Log ("horizontal: "+ horizontal *Time.deltaTime);
+		if(horizontal > 0){
+			horizontalRunSpeed += Time.deltaTime*1.5f;
+		}
+		else if(horizontal <0){
+			horizontalRunSpeed -= Time.deltaTime*1.5f;
+		}
+		else if(horizontal == 0){
+			horizontalRunSpeed *= 0.5f;
+		}
+		if(horizontalRunSpeed > maxRunSpeed || horizontalRunSpeed < -maxRunSpeed){
+			horizontalRunSpeed = maxRunSpeed;
 		}
 
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
@@ -78,21 +95,36 @@ public class PlatformerController : MonoBehaviour {
 		}
 		else{
 			if (controller.isGrounded) {
-				float horizontal = Input.GetAxis ("Horizontal");
-				Debug.Log ("runSpeed:" + runSpeed);
-				if(runSpeed < 0){
-					moveDirection = new Vector3 (0, 0, -runSpeed*Time.deltaTime*100.0f);
+				float rotation = Input.GetAxis ("PlayerRotation");
+				Debug.Log ("verticalRunSpeed:" + verticalRunSpeed);
+				Debug.Log ("horizontalRunSpeed:" + horizontalRunSpeed);
+				
+				int verticalModifier = 1;
+				if(verticalRunSpeed < 0){
+					verticalModifier = -1;
 				}
-				else{
-					moveDirection = new Vector3 (0, 0, runSpeed*Time.deltaTime*100.0f);
+				else if(verticalRunSpeed >0){
+					verticalModifier = 1;
 				}
-				rotateDirection = new Vector3(0,horizontal*Time.deltaTime*100.0f,0);
+				
+				int horizontalModifier = 1;
+				if(horizontalRunSpeed < 0){
+					horizontalModifier = -1;
+				}
+				else if(horizontalRunSpeed >0){
+					horizontalModifier = 1;
+				}
+
+				moveDirection = new Vector3 (horizontalModifier*horizontalRunSpeed*Time.deltaTime*100.0f, 0, verticalModifier*verticalRunSpeed*Time.deltaTime*100.0f);
+				
+
+				rotateDirection = new Vector3(0,rotation*Time.deltaTime*100.0f,0);
 				
 				//rotate
 				transform.Rotate(rotateDirection);
 
 				moveDirection = transform.TransformDirection (moveDirection);
-				moveDirection *= runSpeed;
+				moveDirection *= (verticalRunSpeed + horizontalRunSpeed);
 				if (Input.GetButton ("Jump"))
 					moveDirection.y = jumpSpeed;
 			}
