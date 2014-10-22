@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour {
 	public float maxVel = 10f;
 	public Transform tr;
 
+
+
 	// Use this for initialization
 	void Start () {
 		tr = GetComponent<Transform> ();

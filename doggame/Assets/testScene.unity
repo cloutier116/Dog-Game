@@ -329,6 +329,7 @@ GameObject:
   - 114: {fileID: 213568854}
   - 54: {fileID: 213568853}
   - 64: {fileID: 213568852}
+  - 114: {fileID: 213568858}
   m_Layer: 0
   m_Name: 3rd Person Controller
   m_TagString: Player
@@ -489,6 +490,17 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &213568858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213568850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81d4153e28ed47408048e231ba5d866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336908903
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +961,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ca49380a71a2bb64c830d06bd421b9d1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
