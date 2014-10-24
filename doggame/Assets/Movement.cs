@@ -4,11 +4,12 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
 	public Vector3 velocity = new Vector3(0,0,0);
+	public Quaternion fixedRotation = Quaternion.Euler(0f,0f,0f);
 	public float accel = 1f;
 	public bool[] directions = new bool[] {false, false, false, false};
 									//     forward, back, left, right
 	public float maxVel = 10f;
-	bool climbing;
+	public bool climbing;
 	public Transform tr;
 
 
@@ -25,18 +26,12 @@ public class Movement : MonoBehaviour {
 
 	void FixedUpdate(){
 		if(climbing){
+			tr.rotation = fixedRotation;
 			tr.rigidbody.useGravity = false;
-			velocity.x = 0;
-			velocity.z = 0;
-			velocity.y = 20.0f;
+			velocity = new Vector3(0f, 20f, 0f);
 			velocity = Vector3.ClampMagnitude (velocity, maxVel);
-			tr.Translate (0, 0, velocity.magnitude);
-			
-			
-			velocity = Vector3.ClampMagnitude (velocity, maxVel);
-			
-			tr.LookAt (tr.position + velocity);
-			transform.Translate (0, 0, velocity.magnitude);
+			//tr.LookAt (tr.position + velocity);
+			tr.Translate (0f, velocity.y, 0f);
 		}
 		else{
 			tr.rigidbody.useGravity = true;
@@ -79,6 +74,7 @@ public class Movement : MonoBehaviour {
 		
 		
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
+			fixedRotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z);
 			Debug.Log ("C Down");
 			Collider[] hitColliders = Physics.OverlapSphere (tr.position, 10.0f);
 			int i = 0;
@@ -86,12 +82,14 @@ public class Movement : MonoBehaviour {
 				//hitColliders[i].SendMessage("AddDamage");
 				if (hitColliders [i].tag == "Ladder") {
 					Debug.Log ("Ladder detected");
+					velocity = new Vector3(0f,0f,0f);
 					climbing = true;
 				}
 				i++;
 			}
 		}
 		if (Input.GetKeyUp (KeyCode.C)) { //disable climbing
+			velocity = new Vector3(0f,0f,0f);
 			Debug.Log ("C Up");
 			climbing = false;
 		}

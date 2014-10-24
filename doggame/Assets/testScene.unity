@@ -358,6 +358,7 @@ Transform:
   - {fileID: 667047623}
   - {fileID: 741200974}
   - {fileID: 717582320}
+  - {fileID: 2102698551}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!64 &213568852
@@ -400,9 +401,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
+  fixedRotation: {x: 0, y: 0, z: 0, w: 1}
   accel: .00999999978
   directions: 00000000
   maxVel: .100000001
+  climbing: 0
   tr: {fileID: 0}
 --- !u!111 &213568855
 Animation:
@@ -1274,6 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObject_target: {fileID: 667047622}
+  GameObject_climbingTarget: {fileID: 0}
 --- !u!1 &870259598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,6 +2466,33 @@ Transform:
   - {fileID: 2241916}
   m_Father: {fileID: 163199050}
   m_RootOrder: 0
+--- !u!1 &2102698550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2102698551}
+  m_Layer: 0
+  m_Name: Camera Target
+  m_TagString: ClimbingCameraTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2102698551
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102698550}
+  m_LocalRotation: {x: .241269082, y: 0, z: 0, w: .970458269}
+  m_LocalPosition: {x: 0, y: 6.11210012, z: -2.52399969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 213568851}
+  m_RootOrder: 3
 --- !u!1 &2133922360
 GameObject:
   m_ObjectHideFlags: 0
