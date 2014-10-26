@@ -336,6 +336,8 @@ GameObject:
   - 82: {fileID: 213568857}
   - 114: {fileID: 213568854}
   - 54: {fileID: 213568853}
+  - 64: {fileID: 213568852}
+  - 114: {fileID: 213568858}
   m_Layer: 0
   m_Name: 3rd Person Controller
   m_TagString: Player
@@ -356,8 +358,22 @@ Transform:
   - {fileID: 667047623}
   - {fileID: 741200974}
   - {fileID: 717582320}
+  - {fileID: 2102698551}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!64 &213568852
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213568850}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 4300000, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
 --- !u!54 &213568853
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -371,7 +387,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &213568854
 MonoBehaviour:
@@ -385,12 +401,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
+  fixedRotation: {x: 0, y: 0, z: 0, w: 1}
   accel: .00999999978
   directions: 00000000
   maxVel: .100000001
+  climbing: 0
   tr: {fileID: 0}
-  camera: {fileID: 815824696}
-  camera_transform: {fileID: 0}
 --- !u!111 &213568855
 Animation:
   m_ObjectHideFlags: 0
@@ -486,6 +502,17 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &213568858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 213568850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81d4153e28ed47408048e231ba5d866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336908903
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +965,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 667047622}
   m_LocalRotation: {x: .241268918, y: 0, z: 0, w: .970458329}
-  m_LocalPosition: {x: 0, y: 1.83089995, z: -3.88030005}
+  m_LocalPosition: {x: 0, y: 1.11210001, z: -2.52399993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 213568851}
@@ -973,7 +1000,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ca49380a71a2bb64c830d06bd421b9d1, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1020,7 +1047,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 717582320}
-  - 64: {fileID: 717582321}
   m_Layer: 0
   m_Name: construction_worker
   m_TagString: Untagged
@@ -1040,19 +1066,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 213568851}
   m_RootOrder: 2
---- !u!64 &717582321
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 717582319}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_SmoothSphereCollisions: 0
-  m_Convex: 0
-  m_Mesh: {fileID: 4300000, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
 --- !u!1 &719771292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameObject_target: {fileID: 667047622}
+  GameObject_climbingTarget: {fileID: 0}
 --- !u!1 &870259598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2452,6 +2466,33 @@ Transform:
   - {fileID: 2241916}
   m_Father: {fileID: 163199050}
   m_RootOrder: 0
+--- !u!1 &2102698550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2102698551}
+  m_Layer: 0
+  m_Name: Camera Target
+  m_TagString: ClimbingCameraTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2102698551
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102698550}
+  m_LocalRotation: {x: .241269082, y: 0, z: 0, w: .970458269}
+  m_LocalPosition: {x: 0, y: 6.11210012, z: -2.52399969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 213568851}
+  m_RootOrder: 3
 --- !u!1 &2133922360
 GameObject:
   m_ObjectHideFlags: 0
