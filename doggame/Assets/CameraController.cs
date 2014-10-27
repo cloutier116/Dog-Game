@@ -42,15 +42,21 @@ public class CameraController : MonoBehaviour {
 			Vector3_targetPosition = Transform_target.position;
 			Quaternion_targetRotation = Transform_target.rotation;
 	
-			tr.position = Vector3.Lerp (tr.position, Vector3_targetPosition, Time.deltaTime);
-			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime*2);
+			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
+			distance += 0.5f;
+
+			tr.position = Vector3.Lerp (tr.position, Vector3_targetPosition, Time.deltaTime*distance * 0.5f);
+			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime);
 		}
 		else{
 			
 			Vector3_climbingTargetPosition = Transform_climbingTarget.position;
 			Quaternion_climbingTargetRotation = Transform_climbingTarget.rotation;
 			
-			tr.position = Vector3.Lerp (tr.position, Vector3_climbingTargetPosition, Time.deltaTime);
+			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
+			distance += 0.5f;
+
+			tr.position = Vector3.Lerp (tr.position, Vector3_climbingTargetPosition, Time.deltaTime*distance*0.5f);
 			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_climbingTargetRotation, Time.deltaTime*2);
 		}
 	}
