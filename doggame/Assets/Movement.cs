@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour {
 									//     forward, back, left, right
 	public float maxVel = 10f;
 	public bool climbing;
+	public float tsb = 0.0f;
 	public Transform tr;
 	public GameObject camera;
 	public Transform camera_transform;
@@ -41,8 +42,10 @@ public class Movement : MonoBehaviour {
 			tr.rigidbody.useGravity = true;
 			if(directions[0])
 				velocity.z += accel;
-			else if(directions[1])
+			else if(directions[1]){
 				velocity.z -= accel;
+				directions[1] = false;
+			}
 			else
 			{
 				if(velocity.z < accel/2 && velocity.z > -accel/2)
@@ -86,7 +89,7 @@ public class Movement : MonoBehaviour {
 
 	void getInput()
 	{
-
+		tsb += Time.deltaTime;
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
 			fixedRotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z);
 			Debug.Log ("C Down");
@@ -114,11 +117,12 @@ public class Movement : MonoBehaviour {
 
 		if (Input.GetAxis ("Vertical") > 0)
 			directions [0] = true;
-		else if(Input.GetAxis("Vertical") < 0)
+		else if(Input.GetAxis("Vertical") < 0 && tsb > 1.0f)
 		{
+			tsb = 0.0f;
 			directions [1] = true;
-			if(velocity.x == 0)
-				cameraDirection = camera_transform.TransformDirection(Vector3.forward);
+			//if(velocity.x == 0)
+			//	cameraDirection = camera_transform.TransformDirection(Vector3.forward);
 		}
 		if (Input.GetAxis ("Horizontal") < 0)
 			directions [2] = true;
