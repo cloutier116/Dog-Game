@@ -37,19 +37,33 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+
 		if(Movement_target.climbing == false){
 			Vector3_targetPosition = Transform_target.position;
 			Quaternion_targetRotation = Transform_target.rotation;
 	
-			tr.position = Vector3.Lerp (tr.position, Vector3_targetPosition, Time.deltaTime);
-			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime*2);
+			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
+			distance += 0.5f;
+
+			Quaternion currentRot = tr.rotation;
+			float diffInRotation = Mathf.Abs(currentRot.x - Quaternion_targetRotation.x) +
+				Mathf.Abs(currentRot.y - Quaternion_targetRotation.y) + 
+				Mathf.Abs(currentRot.z - Quaternion_targetRotation.z);
+			diffInRotation += 1.0f;
+			
+
+			tr.position = Vector3.Lerp (tr.position, Vector3_targetPosition, Time.deltaTime*distance * 0.5f);
+			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime * diffInRotation *2.0f);
 		}
 		else{
 			
 			Vector3_climbingTargetPosition = Transform_climbingTarget.position;
 			Quaternion_climbingTargetRotation = Transform_climbingTarget.rotation;
 			
-			tr.position = Vector3.Lerp (tr.position, Vector3_climbingTargetPosition, Time.deltaTime);
+			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
+			distance += 0.5f;
+
+			tr.position = Vector3.Lerp (tr.position, Vector3_climbingTargetPosition, Time.deltaTime*distance*0.5f);
 			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_climbingTargetRotation, Time.deltaTime*2);
 		}
 	}
