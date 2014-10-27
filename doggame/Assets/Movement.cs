@@ -128,7 +128,7 @@ public class Movement : MonoBehaviour {
 		if (Input.GetButtonDown ("Jump"))
 		{
 			print ("jump");
-			//velocity.y = 9.8f;
+			velocity.y = 9.8f;
 		}
 		if(Input.GetButtonDown("Bark"))
 		   print("bark");

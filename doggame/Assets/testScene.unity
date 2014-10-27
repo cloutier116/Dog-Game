@@ -407,6 +407,8 @@ MonoBehaviour:
   maxVel: .100000001
   climbing: 0
   tr: {fileID: 0}
+  camera: {fileID: 815824696}
+  camera_transform: {fileID: 0}
 --- !u!111 &213568855
 Animation:
   m_ObjectHideFlags: 0
@@ -513,6 +515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81d4153e28ed47408048e231ba5d866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleAnimation: {fileID: 0}
+  runAnimation: {fileID: 0}
+  jumpAnimation: {fileID: 0}
+  _characterState: 0
 --- !u!1 &336908903
 GameObject:
   m_ObjectHideFlags: 0
