@@ -45,8 +45,15 @@ public class CameraController : MonoBehaviour {
 			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
 			distance += 0.5f;
 
+			Quaternion currentRot = tr.rotation;
+			float diffInRotation = Mathf.Abs(currentRot.x - Quaternion_targetRotation.x) +
+				Mathf.Abs(currentRot.y - Quaternion_targetRotation.y) + 
+				Mathf.Abs(currentRot.z - Quaternion_targetRotation.z);
+			diffInRotation += 1.0f;
+			
+
 			tr.position = Vector3.Lerp (tr.position, Vector3_targetPosition, Time.deltaTime*distance * 0.5f);
-			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime);
+			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime * diffInRotation *2.0f);
 		}
 		else{
 			
