@@ -19,7 +19,7 @@ public class CharacterAnimation : MonoBehaviour {
 	};
 	// Use this for initialization
 	void Start () {
-		controller = GetComponent<CharacterController> ();
+		//controller = GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
@@ -53,11 +53,15 @@ public class CharacterAnimation : MonoBehaviour {
 			{
 				animation.Play ("idle");
 			}
-			if (controller.isGrounded) {
+			if (true)//controller.isGrounded)
+			{
 				if (Input.GetButton ("Jump"))
 					_characterState = CharacterState.Jumping;
-				if (Input.GetButton ("Horizontal") || Input.GetButton("Vertical"))
+				else if (Input.GetButton ("Horizontal") || Input.GetButton("Vertical"))
 					_characterState = CharacterState.Running;
+				else {
+					_characterState = CharacterState.Idle;
+				}
 			}
 
 		}
