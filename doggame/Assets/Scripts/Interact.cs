@@ -15,16 +15,18 @@ public class Interact : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyUp (KeyCode.B)) {
+		if (Input.GetButtonUp("Bark")) 
+		{
 			//bark
 			audio.PlayOneShot(bark, 0.7f);
-				}
+		}
 
-		if (Input.GetKeyUp (KeyCode.G)) {
+		if (Input.GetButtonUp("Interact"))
+		{
 			if(holding != null){
 				holding.GetComponent<Transform>().parent = null;
 				holding = null;
-			}
+		}
 			else{
 	#if debugMode
 				Debug.Log ("G pressed, attempting to interact");

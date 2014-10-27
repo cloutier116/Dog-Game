@@ -37,6 +37,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+
 		if(Movement_target.climbing == false){
 			Vector3_targetPosition = Transform_target.position;
 			Quaternion_targetRotation = Transform_target.rotation;

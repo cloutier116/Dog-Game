@@ -11,12 +11,16 @@ public class Movement : MonoBehaviour {
 	public float maxVel = 10f;
 	public bool climbing;
 	public Transform tr;
+	public GameObject camera;
+	public Transform camera_transform;
+	Vector3 cameraDirection;
 
 
 
 	// Use this for initialization
 	void Start () {
 		tr = GetComponent<Transform> ();
+		camera_transform = camera.transform;
 	}
 	
 	// Update is called once per frame
@@ -41,7 +45,7 @@ public class Movement : MonoBehaviour {
 				velocity.z -= accel;
 			else
 			{
-				if(velocity.z < accel/2 || velocity.z > -accel/2)
+				if(velocity.z < accel/2 && velocity.z > -accel/2)
 					velocity.z = 0;
 				else if(velocity.z > 0)
 					velocity.z -= accel/2;
@@ -54,7 +58,7 @@ public class Movement : MonoBehaviour {
 				velocity.x += accel;
 			else
 			{
-				if(velocity.x < accel/2 || velocity.x > -accel/2)
+				if(velocity.x < accel/2 && velocity.x > -accel/2)
 					velocity.x = 0;
 				else if(velocity.x > 0)
 					velocity.x -= accel/2;
@@ -62,17 +66,27 @@ public class Movement : MonoBehaviour {
 					velocity.x += accel/2;
 			}
 			velocity = Vector3.ClampMagnitude (velocity, maxVel);
-			
-			tr.LookAt (tr.position + velocity);
-			transform.Translate (0, 0, velocity.magnitude);
+
+			Vector3 forward;
+			if (cameraDirection == Vector3.zero)
+				forward = camera_transform.TransformDirection(Vector3.forward);
+			else
+				forward = cameraDirection;
+			forward.y = 0f;
+			forward = forward.normalized;
+			Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
+
+			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
+			tr.LookAt (tr.position + walkDirection);
+			tr.position = tr.position + walkDirection;
+			//tr.Translate (velocity.magnitude * camera_transform.forward);
 		}
 		
 	}
 
 	void getInput()
 	{
-		
-		
+
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
 			fixedRotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z);
 			Debug.Log ("C Down");
@@ -96,15 +110,29 @@ public class Movement : MonoBehaviour {
 
 		for(int i = 0; i < directions.Length; i++)
 			directions[i] = false;
+		cameraDirection = Vector3.zero;
 
 		if (Input.GetAxis ("Vertical") > 0)
 			directions [0] = true;
 		else if(Input.GetAxis("Vertical") < 0)
+		{
 			directions [1] = true;
+			if(velocity.x == 0)
+				cameraDirection = camera_transform.TransformDirection(Vector3.forward);
+		}
 		if (Input.GetAxis ("Horizontal") < 0)
 			directions [2] = true;
 		else if (Input.GetAxis ("Horizontal") > 0)
 			directions [3] = true;
+
+		if (Input.GetButtonDown ("Jump"))
+		{
+			print ("jump");
+			//velocity.y = 9.8f;
+		}
+		if(Input.GetButtonDown("Bark"))
+		   print("bark");
+
 		return;
 	}
 }
