@@ -16,6 +16,10 @@ public class Movement : MonoBehaviour {
 	public Transform camera_transform;
 	public bool jump = false;
 
+	public float currentJumpSpeed = 0f;
+
+	public float jumpSpeed = 20f;
+
 	public bool onGround;
 	Vector3 cameraDirection;
 
@@ -89,11 +93,17 @@ public class Movement : MonoBehaviour {
 			
 			if(jump){
 				Debug.Log("JUMPING!!");
-				velocity.y += 3;
 				jump = false;
+				currentJumpSpeed = 1.0f;
 			}
 
-			Vector3 walkDirection = (velocity.x * right + velocity.z * forward + velocity.y * upward);
+			if(currentJumpSpeed < jumpSpeed){
+				currentJumpSpeed += Time.fixedDeltaTime*5.0f;
+				tr.position += tr.up * currentJumpSpeed * Time.fixedDeltaTime;
+				
+			}
+
+			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
 			tr.LookAt (tr.position + walkDirection);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
