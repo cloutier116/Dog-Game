@@ -14,6 +14,9 @@ public class Movement : MonoBehaviour {
 	public Transform tr;
 	public GameObject camera;
 	public Transform camera_transform;
+	public bool jump = false;
+
+	public bool onGround;
 	Vector3 cameraDirection;
 
 
@@ -39,6 +42,7 @@ public class Movement : MonoBehaviour {
 			tr.Translate (0f, velocity.y, 0f);
 		}
 		else{
+
 			tr.rigidbody.useGravity = true;
 			if(directions[0])
 				velocity.z += accel;
@@ -70,6 +74,8 @@ public class Movement : MonoBehaviour {
 			}
 			velocity = Vector3.ClampMagnitude (velocity, maxVel);
 
+			
+
 			Vector3 forward;
 			if (cameraDirection == Vector3.zero)
 				forward = camera_transform.TransformDirection(Vector3.forward);
@@ -78,13 +84,34 @@ public class Movement : MonoBehaviour {
 			forward.y = 0f;
 			forward = forward.normalized;
 			Vector3 right = new Vector3(forward.z, 0.0f, -forward.x);
+			
+			Vector3 upward = new Vector3(0.0f,1.0f,0.0f);
+			
+			if(jump){
+				Debug.Log("JUMPING!!");
+				velocity.y += 3;
+				jump = false;
+			}
 
-			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
+			Vector3 walkDirection = (velocity.x * right + velocity.z * forward + velocity.y * upward);
 			tr.LookAt (tr.position + walkDirection);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
+
+
 		}
 		
+	}
+
+	void OnCollisionStay(Collision collision){
+		onGround = false;
+		if(collision.contacts.Length >0){
+			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
+				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
+					onGround = true;
+				}
+			}
+		}
 	}
 
 	void getInput()
@@ -104,11 +131,17 @@ public class Movement : MonoBehaviour {
 				}
 				i++;
 			}
-		}
-		if (Input.GetKeyUp (KeyCode.C)) { //disable climbing
 			velocity = new Vector3(0f,0f,0f);
 			Debug.Log ("C Up");
 			climbing = false;
+		}
+
+		if(Input.GetKeyDown(KeyCode.Space)){	
+			if(onGround){
+				print ("jump");
+				onGround = false;
+				jump = true;
+			}
 		}
 
 		for(int i = 0; i < directions.Length; i++)
@@ -131,7 +164,7 @@ public class Movement : MonoBehaviour {
 
 		if (Input.GetButtonDown ("Jump"))
 		{
-			print ("jump");
+			
 			velocity.y = 9.8f;
 		}
 		if(Input.GetButtonDown("Bark"))
