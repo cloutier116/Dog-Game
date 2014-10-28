@@ -94,11 +94,11 @@ public class Movement : MonoBehaviour {
 			if(jump){
 				Debug.Log("JUMPING!!");
 				jump = false;
-				currentJumpSpeed = 1.0f;
+				currentJumpSpeed = 3.0f;
 			}
 
 			if(currentJumpSpeed < jumpSpeed){
-				currentJumpSpeed += Time.fixedDeltaTime*5.0f;
+				currentJumpSpeed += Time.fixedDeltaTime*40.0f;
 				tr.position += tr.up * currentJumpSpeed * Time.fixedDeltaTime;
 				
 			}
