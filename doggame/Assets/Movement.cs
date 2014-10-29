@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour {
 
 	public Vector3 velocity = new Vector3(0,0,0);
 	public Quaternion fixedRotation = Quaternion.Euler(0f,0f,0f);
-	public float accel = 1f;
+	public float accel = .5f;
 	public bool[] directions = new bool[] {false, false, false, false};
 									//     forward, back, left, right
 	public float maxVel = 10f;
@@ -60,12 +60,12 @@ public class Movement : MonoBehaviour {
 			}
 			else
 			{
-				if(velocity.z < accel/2 && velocity.z > -accel/2)
+				if(velocity.z < accel && velocity.z > -accel)
 					velocity.z = 0;
 				else if(velocity.z > 0)
-					velocity.z -= accel/2;
+					velocity.z -= accel;
 				else if(velocity.z < 0)
-					velocity.z += accel/2;
+					velocity.z += accel;
 			}
 			if(directions[2])
 				velocity.x -= accel;
@@ -73,12 +73,12 @@ public class Movement : MonoBehaviour {
 				velocity.x += accel;
 			else
 			{
-				if(velocity.x < accel/2 && velocity.x > -accel/2)
+				if(velocity.x < accel && velocity.x > -accel)
 					velocity.x = 0;
 				else if(velocity.x > 0)
-					velocity.x -= accel/2;
+					velocity.x -= accel;
 				else if(velocity.x < 0)
-					velocity.x += accel/2;
+					velocity.x += accel;
 			}
 			velocity = Vector3.ClampMagnitude (velocity, maxVel);
 
@@ -96,7 +96,7 @@ public class Movement : MonoBehaviour {
 			Vector3 upward = new Vector3(0.0f,1.0f,0.0f);
 			
 			if(jump){
-				Debug.Log("JUMPING!!");
+				//Debug.Log("JUMPING!!");
 				jump = false;
 				currentJumpSpeed = 3.0f;
 			}
@@ -113,7 +113,8 @@ public class Movement : MonoBehaviour {
 			}
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
-			tr.LookAt (tr.position + walkDirection);
+			if(walkDirection != Vector3.zero)
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .5f);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
