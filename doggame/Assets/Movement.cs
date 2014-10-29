@@ -12,6 +12,13 @@ public class Movement : MonoBehaviour {
 
 	public float jumpHeldDownFor = 0.0f;
 
+	public float defaultJumpSpeed = 5.0f;
+
+	public float hangFactor = 1.5f;
+	public float jumpIncrease = 30.0f; 
+
+	public float topY;
+
 	public bool climbing;
 	public float tsb = 0.0f;
 	public Transform tr;
@@ -20,6 +27,7 @@ public class Movement : MonoBehaviour {
 	public bool jump = false;
 
 	public float currentJumpSpeed = 0f;
+
 
 	public float jumpSpeed = 5f;
 
@@ -50,6 +58,7 @@ public class Movement : MonoBehaviour {
 		}
 		else{
 
+			float fdt = Time.fixedDeltaTime;
 
 			tr.rigidbody.useGravity = true;
 			if(directions[0])
@@ -103,12 +112,21 @@ public class Movement : MonoBehaviour {
 
 			if(currentJumpSpeed < jumpSpeed){
 				if(Input.GetKey(KeyCode.Space) && jumpHeldDownFor > 0){
-					jumpHeldDownFor -= Time.fixedDeltaTime;
-					jumpSpeed += Time.fixedDeltaTime * 10;
+					jumpHeldDownFor -= fdt;
+					jumpSpeed +=fdt * 10;
 				}
 
-				currentJumpSpeed += Time.fixedDeltaTime*40.0f;
-				tr.position += tr.up * currentJumpSpeed * Time.fixedDeltaTime;
+				currentJumpSpeed += Time.fixedDeltaTime*jumpIncrease - currentJumpSpeed;
+				tr.position += tr.up * currentJumpSpeed * fdt;
+				topY = tr.position.y;
+			}
+			if(currentJumpSpeed >= jumpSpeed && currentJumpSpeed < jumpSpeed * hangFactor){
+				currentJumpSpeed += Time.fixedDeltaTime*jumpIncrease;
+				//tr.position += tr.up * 9.8f * fdt;
+				
+				Vector3 pos = tr.position;
+				pos.y = topY;
+				tr.position = pos;
 				
 			}
 
@@ -129,6 +147,10 @@ public class Movement : MonoBehaviour {
 			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
 				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
 					onGround = true;
+					
+					jumpHeldDownFor = 0.2f;
+					jumpSpeed = defaultJumpSpeed;
+					
 				}
 			}
 		}
@@ -162,10 +184,6 @@ public class Movement : MonoBehaviour {
 				onGround = false;
 				jump = true;
 			}
-		}
-		if(Input.GetKeyUp(KeyCode.Space)){
-			jumpHeldDownFor = 1;
-			jumpSpeed = 10;
 		}
 
 		for(int i = 0; i < directions.Length; i++)
