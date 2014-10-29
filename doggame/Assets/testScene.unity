@@ -369,7 +369,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 213568850}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: .5
   m_Height: 2
   m_Direction: 1
@@ -387,7 +387,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &213568854
 MonoBehaviour:
@@ -405,6 +405,7 @@ MonoBehaviour:
   accel: .00999999978
   directions: 00000000
   maxVel: .100000001
+  jumpHeldDownFor: 1
   climbing: 0
   tsb: 0
   tr: {fileID: 0}
@@ -412,7 +413,7 @@ MonoBehaviour:
   camera_transform: {fileID: 0}
   jump: 0
   currentJumpSpeed: 0
-  jumpSpeed: 20
+  jumpSpeed: 10
   onGround: 0
 --- !u!111 &213568855
 Animation:
@@ -520,6 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81d4153e28ed47408048e231ba5d866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleAnimation: {fileID: 7400012, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
+  runAnimation: {fileID: 7400014, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
+  jumpAnimation: {fileID: 7400018, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
+  _characterState: 0
 --- !u!1 &336706122
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +740,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 421779538}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: .5
   m_Height: 2
@@ -1145,6 +1150,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 717582320}
+  - 64: {fileID: 717582321}
   m_Layer: 0
   m_Name: construction_worker
   m_TagString: Untagged
@@ -1164,6 +1170,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 213568851}
   m_RootOrder: 2
+--- !u!64 &717582321
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 717582319}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: 449b48f7eb5d87a4baaa5fb73f875a59, type: 3}
 --- !u!1 &719771292
 GameObject:
   m_ObjectHideFlags: 0
