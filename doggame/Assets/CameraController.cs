@@ -63,8 +63,9 @@ public class CameraController : MonoBehaviour {
 			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
 			distance += 0.5f;
 
-			tr.position = Vector3.Lerp (tr.position, Vector3_climbingTargetPosition, 0.5f);
-			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_climbingTargetRotation, .05f);
+		 
+			tr.position = Vector3.Slerp (tr.position, Vector3_climbingTargetPosition, 0.5f);
+			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_climbingTargetRotation, 4f);
 		}
 	}
 }

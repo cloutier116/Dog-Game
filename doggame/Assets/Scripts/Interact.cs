@@ -5,7 +5,7 @@ using System.Collections;
 public class Interact : MonoBehaviour {
 	private Transform myTransform;
 	public GameObject holding; //gameobject the player is currently holding
-	public float radius = 5.0f;
+	public float radius = 1.0f;
 	public AudioClip bark;
 
 	// Use this for initialization
@@ -49,9 +49,10 @@ public class Interact : MonoBehaviour {
 						if(type == Object.type.TYPE_PICKUP){
 							Debug.Log ("picking up object");
 							Transform Transform_Target = Object_target.GetComponent<Transform>();
+							//Transform_Target.transform.position = Transform_Target.position + Transform_Target.forward;
 							Transform_Target.parent = myTransform;
+							Transform_Target.localPosition = new Vector3(0,0,1);
 
-							Transform_Target.transform.position = new Vector3(Transform_Target.position.x, Transform_Target.position.y + 0.1f);
 						}
 					}
 					i++;
