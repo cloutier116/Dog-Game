@@ -55,7 +55,6 @@ public class CameraController : MonoBehaviour {
 			//print (futurePosition);
 			if(futurePosition.magnitude > .02)
 			{
-				print ("moving");
 				futurePosition = futurePosition.normalized * 5;
 				tr.position = Vector3.Lerp (tr.position, tr.position + futurePosition, Time.deltaTime*distance * 0.5f);
 				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime * diffInRotation *2.0f);

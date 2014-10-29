@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour {
 			}
 			else
 			{
-				if(velocity.z < accel && velocity.z > -accel)
+				if(velocity.z < accel/2 && velocity.z > -accel/2)
 					velocity.z = 0;
 				else if(velocity.z > 0)
 					velocity.z -= accel;
@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour {
 				velocity.x += accel;
 			else
 			{
-				if(velocity.x < accel && velocity.x > -accel)
+				if(velocity.x < accel/2 && velocity.x > -accel/2)
 					velocity.x = 0;
 				else if(velocity.x > 0)
 					velocity.x -= accel;
@@ -108,7 +108,7 @@ public class Movement : MonoBehaviour {
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
 			if(walkDirection != Vector3.zero)
-				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .5f);
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .2f);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
