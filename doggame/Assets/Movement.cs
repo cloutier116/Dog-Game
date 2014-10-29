@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour {
 
 	public Vector3 velocity = new Vector3(0,0,0);
 	public Quaternion fixedRotation = Quaternion.Euler(0f,0f,0f);
-	public float accel = .5f;
+	public float accel = .2f;
 	public bool[] directions = new bool[] {false, false, false, false};
 									//     forward, back, left, right
 	public float maxVel = 10f;
@@ -108,7 +108,7 @@ public class Movement : MonoBehaviour {
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
 			if(walkDirection != Vector3.zero)
-				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .2f);
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
