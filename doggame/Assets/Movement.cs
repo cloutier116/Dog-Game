@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour {
 	public float topY;
 
 	public float jumpForce = 300f;
+	public float jumpingTime = 3.0f;
 
 	public bool climbing;
 	public float tsb = 0.0f;
@@ -25,6 +26,8 @@ public class Movement : MonoBehaviour {
 	public bool jump = false;
 
 	public bool onGround;
+	public bool jumpUp;
+	bool pressed = false;
 	Vector3 cameraDirection;
 
 
@@ -97,13 +100,25 @@ public class Movement : MonoBehaviour {
 			
 			Vector3 upward = new Vector3(0.0f,1.0f,0.0f);
 			
-			if(jump){
+			if(jump && onGround){
 				//Debug.Log("JUMPING!!");
 				jump = false;
+				onGround = false;
 				//currentJumpSpeed = 3.0f;
 				rigidbody.AddForce(Vector3.up * jumpForce);
+				//rigidbody.velocity = new Vector3(0,0.1f,0);
 			}
-
+			
+			
+			if(rigidbody.velocity.y > 0 ){
+				jumpingTime -= fdt;
+				if(jumpUp){
+					jumpUp =false;
+					Debug.Log("Jump up");
+					rigidbody.velocity = new Vector3(0,0,0);
+					rigidbody.angularVelocity = Vector3.zero;
+				}
+			}
 	
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
@@ -123,6 +138,19 @@ public class Movement : MonoBehaviour {
 			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
 				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
 					onGround = true;
+					
+					
+				}
+			}
+		}
+	}
+
+	void OnCollisionExit(Collision collision) {
+		onGround = true;
+		if(collision.contacts.Length >0){
+			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
+				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
+					onGround = false;
 					
 					
 				}
@@ -152,12 +180,22 @@ public class Movement : MonoBehaviour {
 			climbing = false;
 		}
 
-		if(Input.GetButtonDown("Jump")){
-			if(onGround){
-				print ("jump");
-				onGround = false;
-				jump = true;
-			}
+		if(Input.GetButton("Jump") && !pressed && onGround){
+			
+			pressed = true;
+			print ("jump");
+			onGround = false;
+			jump = true;
+			
+		}
+		else if (!Input.GetButton("Jump") && pressed){
+			jumpUp = true;
+			pressed = false;
+			//print ("Cut jump short");
+		}
+		else if (!Input.GetButton("Jump") && onGround){
+			pressed = false;
+			//print ("landed");
 		}
 
 		for(int i = 0; i < directions.Length; i++)
