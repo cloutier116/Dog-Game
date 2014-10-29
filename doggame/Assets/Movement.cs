@@ -5,12 +5,19 @@ public class Movement : MonoBehaviour {
 
 	public Vector3 velocity = new Vector3(0,0,0);
 	public Quaternion fixedRotation = Quaternion.Euler(0f,0f,0f);
-	public float accel = 1f;
+	public float accel = .5f;
 	public bool[] directions = new bool[] {false, false, false, false};
 									//     forward, back, left, right
 	public float maxVel = 10f;
 
 	public float jumpHeldDownFor = 0.0f;
+
+	public float defaultJumpSpeed = 5.0f;
+
+	public float hangFactor = 1.5f;
+	public float jumpIncrease = 30.0f; 
+
+	public float topY;
 
 	public bool climbing;
 	public float tsb = 0.0f;
@@ -21,7 +28,8 @@ public class Movement : MonoBehaviour {
 
 	public float currentJumpSpeed = 0f;
 
-	public float jumpSpeed = 20f;
+
+	public float jumpSpeed = 5f;
 
 	public bool onGround;
 	Vector3 cameraDirection;
@@ -50,6 +58,7 @@ public class Movement : MonoBehaviour {
 		}
 		else{
 
+			float fdt = Time.fixedDeltaTime;
 
 			tr.rigidbody.useGravity = true;
 			if(directions[0])
@@ -60,12 +69,12 @@ public class Movement : MonoBehaviour {
 			}
 			else
 			{
-				if(velocity.z < accel/2 && velocity.z > -accel/2)
+				if(velocity.z < accel && velocity.z > -accel)
 					velocity.z = 0;
 				else if(velocity.z > 0)
-					velocity.z -= accel/2;
+					velocity.z -= accel;
 				else if(velocity.z < 0)
-					velocity.z += accel/2;
+					velocity.z += accel;
 			}
 			if(directions[2])
 				velocity.x -= accel;
@@ -73,12 +82,12 @@ public class Movement : MonoBehaviour {
 				velocity.x += accel;
 			else
 			{
-				if(velocity.x < accel/2 && velocity.x > -accel/2)
+				if(velocity.x < accel && velocity.x > -accel)
 					velocity.x = 0;
 				else if(velocity.x > 0)
-					velocity.x -= accel/2;
+					velocity.x -= accel;
 				else if(velocity.x < 0)
-					velocity.x += accel/2;
+					velocity.x += accel;
 			}
 			velocity = Vector3.ClampMagnitude (velocity, maxVel);
 
@@ -96,24 +105,34 @@ public class Movement : MonoBehaviour {
 			Vector3 upward = new Vector3(0.0f,1.0f,0.0f);
 			
 			if(jump){
-				Debug.Log("JUMPING!!");
+				//Debug.Log("JUMPING!!");
 				jump = false;
 				currentJumpSpeed = 3.0f;
 			}
 
 			if(currentJumpSpeed < jumpSpeed){
 				if(Input.GetKey(KeyCode.Space) && jumpHeldDownFor > 0){
-					jumpHeldDownFor -= Time.fixedDeltaTime;
-					jumpSpeed += Time.fixedDeltaTime * 20;
+					jumpHeldDownFor -= fdt;
+					jumpSpeed +=fdt * 10;
 				}
 
-				currentJumpSpeed += Time.fixedDeltaTime*40.0f;
-				tr.position += tr.up * currentJumpSpeed * Time.fixedDeltaTime;
+				currentJumpSpeed += Time.fixedDeltaTime*jumpIncrease - currentJumpSpeed;
+				tr.position += tr.up * currentJumpSpeed * fdt;
+				topY = tr.position.y;
+			}
+			if(currentJumpSpeed >= jumpSpeed && currentJumpSpeed < jumpSpeed * hangFactor){
+				currentJumpSpeed += Time.fixedDeltaTime*jumpIncrease;
+				//tr.position += tr.up * 9.8f * fdt;
+				
+				Vector3 pos = tr.position;
+				pos.y = topY;
+				tr.position = pos;
 				
 			}
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
-			tr.LookAt (tr.position + walkDirection);
+			if(walkDirection != Vector3.zero)
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .5f);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
@@ -128,6 +147,10 @@ public class Movement : MonoBehaviour {
 			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
 				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
 					onGround = true;
+					
+					jumpHeldDownFor = 0.2f;
+					jumpSpeed = defaultJumpSpeed;
+					
 				}
 			}
 		}
@@ -161,10 +184,6 @@ public class Movement : MonoBehaviour {
 				onGround = false;
 				jump = true;
 			}
-		}
-		if(Input.GetKeyUp(KeyCode.Space)){
-			jumpHeldDownFor = 1;
-			jumpSpeed = 10;
 		}
 
 		for(int i = 0; i < directions.Length; i++)
