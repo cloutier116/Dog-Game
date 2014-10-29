@@ -100,10 +100,12 @@ public class Movement : MonoBehaviour {
 			
 			Vector3 upward = new Vector3(0.0f,1.0f,0.0f);
 			
-			if(jumpUp){
+
+			if(jumpUp && rigidbody.velocity.y > 0){
 				jump = false;
 				jumpUp =false;
 				Debug.Log("Jump up");
+				GameObject.Find("Main Camera").GetComponent<CameraController>().frozen = false;
 				rigidbody.velocity = new Vector3(0,0,0);
 				rigidbody.angularVelocity = Vector3.zero;
 			}
@@ -111,6 +113,7 @@ public class Movement : MonoBehaviour {
 			if(jump && onGround && !jumpUp){
 				//Debug.Log("JUMPING!!");
 				jump = false;
+				GameObject.Find("Main Camera").GetComponent<CameraController>().frozen = true;
 				onGround = false;
 				//currentJumpSpeed = 3.0f;
 				rigidbody.AddForce(Vector3.up * jumpForce);

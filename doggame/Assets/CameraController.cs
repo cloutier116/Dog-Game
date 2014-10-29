@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour {
 	private Transform Transform_target;
 	private Vector3 Vector3_targetPosition;
 	private Quaternion Quaternion_targetRotation;
+
+	public bool frozen = false;
 	
 	public GameObject GameObject_climbingTarget;
 	private Transform Transform_climbingTarget;
@@ -38,6 +40,10 @@ public class CameraController : MonoBehaviour {
 
 	void FixedUpdate(){
 
+		if(frozen){
+
+		}
+		else{
 		if(Movement_target.climbing == false){
 			Vector3_targetPosition = Transform_target.position;
 			Quaternion_targetRotation = Transform_target.rotation;
@@ -72,6 +78,7 @@ public class CameraController : MonoBehaviour {
 
 			tr.position = Vector3.Lerp(tr.position, (futurePosition - tr.position).normalized, .5f);
 			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_climbingTargetRotation, 4f);
+		}
 		}
 	}
 }
