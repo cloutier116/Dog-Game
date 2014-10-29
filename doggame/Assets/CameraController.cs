@@ -51,9 +51,15 @@ public class CameraController : MonoBehaviour {
 				Mathf.Abs(currentRot.z - Quaternion_targetRotation.z);
 			diffInRotation += 1.0f;
 			
-
-			tr.position = Vector3.Lerp (tr.position, Vector3_targetPosition, Time.deltaTime*distance * 0.5f);
-			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime * diffInRotation *2.0f);
+			Vector3 futurePosition = (Vector3_targetPosition - tr.position);
+			//print (futurePosition);
+			if(futurePosition.magnitude > .02)
+			{
+				print ("moving");
+				futurePosition = futurePosition.normalized * 5;
+				tr.position = Vector3.Lerp (tr.position, tr.position + futurePosition, Time.deltaTime*distance * 0.5f);
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime * diffInRotation *2.0f);
+			}
 		}
 		else{
 			
@@ -63,8 +69,9 @@ public class CameraController : MonoBehaviour {
 			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
 			distance += 0.5f;
 
-		 
-			tr.position = Vector3.Slerp (tr.position, Vector3_climbingTargetPosition, 0.5f);
+			Vector3 futurePosition = Vector3.Lerp (tr.position, Vector3_climbingTargetPosition, 0.5f);
+
+			tr.position = Vector3.Lerp(tr.position, (futurePosition - tr.position).normalized, .5f);
 			tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_climbingTargetRotation, 4f);
 		}
 	}
