@@ -100,7 +100,15 @@ public class Movement : MonoBehaviour {
 			
 			Vector3 upward = new Vector3(0.0f,1.0f,0.0f);
 			
-			if(jump && onGround){
+			if(jumpUp){
+				jump = false;
+				jumpUp =false;
+				Debug.Log("Jump up");
+				rigidbody.velocity = new Vector3(0,0,0);
+				rigidbody.angularVelocity = Vector3.zero;
+			}
+
+			if(jump && onGround && !jumpUp){
 				//Debug.Log("JUMPING!!");
 				jump = false;
 				onGround = false;
@@ -110,15 +118,8 @@ public class Movement : MonoBehaviour {
 			}
 			
 			
-			if(rigidbody.velocity.y > 0 ){
-				jumpingTime -= fdt;
-				if(jumpUp){
-					jumpUp =false;
-					Debug.Log("Jump up");
-					rigidbody.velocity = new Vector3(0,0,0);
-					rigidbody.angularVelocity = Vector3.zero;
-				}
-			}
+			
+			
 	
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
