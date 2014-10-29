@@ -10,7 +10,12 @@ public class Movement : MonoBehaviour {
 									//     forward, back, left, right
 	public float maxVel = 10f;
 
-	public float jumpHeldDownFor = 0.0f;
+
+	public float hangFactor = 1.5f;
+
+	public float topY;
+
+	public float jumpForce = 300f;
 
 	public bool climbing;
 	public float tsb = 0.0f;
@@ -19,14 +24,10 @@ public class Movement : MonoBehaviour {
 	public Transform camera_transform;
 	public bool jump = false;
 
-	public float currentJumpSpeed = 0f;
-
-	public float jumpSpeed = 5f;
-
 	public bool onGround;
 	Vector3 cameraDirection;
 
-	private bool VAxisInUse = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +51,7 @@ public class Movement : MonoBehaviour {
 		}
 		else{
 
+			float fdt = Time.fixedDeltaTime;
 
 			tr.rigidbody.useGravity = true;
 			if(directions[0])
@@ -98,23 +100,15 @@ public class Movement : MonoBehaviour {
 			if(jump){
 				//Debug.Log("JUMPING!!");
 				jump = false;
-				currentJumpSpeed = 3.0f;
+				//currentJumpSpeed = 3.0f;
+				rigidbody.AddForce(Vector3.up * jumpForce);
 			}
 
-			if(currentJumpSpeed < jumpSpeed){
-				if(Input.GetKey(KeyCode.Space) && jumpHeldDownFor > 0){
-					jumpHeldDownFor -= Time.fixedDeltaTime;
-					jumpSpeed += Time.fixedDeltaTime * 10;
-				}
-
-				currentJumpSpeed += Time.fixedDeltaTime*40.0f;
-				tr.position += tr.up * currentJumpSpeed * Time.fixedDeltaTime;
-				
-			}
+	
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
 			if(walkDirection != Vector3.zero)
-				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .1f);
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .5f);
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
@@ -129,6 +123,8 @@ public class Movement : MonoBehaviour {
 			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
 				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
 					onGround = true;
+					
+					
 				}
 			}
 		}
@@ -156,19 +152,17 @@ public class Movement : MonoBehaviour {
 			climbing = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetButtonDown("Jump")){
 			if(onGround){
+				print ("jump");
 				onGround = false;
 				jump = true;
 			}
 		}
-		if(Input.GetKeyUp(KeyCode.Space)){
-			jumpHeldDownFor = 1;
-			jumpSpeed = 10;
-		}
 
 		for(int i = 0; i < directions.Length; i++)
 			directions[i] = false;
+		cameraDirection = Vector3.zero;
 
 		if (Input.GetAxis ("Vertical") > 0)
 			directions [0] = true;
@@ -176,26 +170,15 @@ public class Movement : MonoBehaviour {
 		{
 			tsb = 0.0f;
 			directions [1] = true;
-		}
-		if(Input.GetAxis("Vertical") < 0 && Input.GetAxis("Horizontal") == 0)
-		{
-			if(!VAxisInUse)
-			{
-				cameraDirection = camera_transform.TransformDirection(Vector3.forward);
-			}
-			VAxisInUse = true;
-		}
-		else 
-		{
-			VAxisInUse = false;
-			cameraDirection = Vector3.zero;
+			//if(velocity.x == 0)
+			//	cameraDirection = camera_transform.TransformDirection(Vector3.forward);
 		}
 		if (Input.GetAxis ("Horizontal") < 0)
 			directions [2] = true;
 		else if (Input.GetAxis ("Horizontal") > 0)
 			directions [3] = true;
 
-
+		
 		if(Input.GetButtonDown("Bark"))
 		   print("bark");
 
