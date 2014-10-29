@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour {
 
 	public float currentJumpSpeed = 0f;
 
-	public float jumpSpeed = 20f;
+	public float jumpSpeed = 5f;
 
 	public bool onGround;
 	Vector3 cameraDirection;
@@ -104,7 +104,7 @@ public class Movement : MonoBehaviour {
 			if(currentJumpSpeed < jumpSpeed){
 				if(Input.GetKey(KeyCode.Space) && jumpHeldDownFor > 0){
 					jumpHeldDownFor -= Time.fixedDeltaTime;
-					jumpSpeed += Time.fixedDeltaTime * 20;
+					jumpSpeed += Time.fixedDeltaTime * 10;
 				}
 
 				currentJumpSpeed += Time.fixedDeltaTime*40.0f;
