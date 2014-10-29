@@ -9,6 +9,9 @@ public class Movement : MonoBehaviour {
 	public bool[] directions = new bool[] {false, false, false, false};
 									//     forward, back, left, right
 	public float maxVel = 10f;
+
+	public float jumpHeldDownFor = 0.0f;
+
 	public bool climbing;
 	public float tsb = 0.0f;
 	public Transform tr;
@@ -46,6 +49,7 @@ public class Movement : MonoBehaviour {
 			tr.Translate (0f, velocity.y, 0f);
 		}
 		else{
+
 
 			tr.rigidbody.useGravity = true;
 			if(directions[0])
@@ -98,6 +102,11 @@ public class Movement : MonoBehaviour {
 			}
 
 			if(currentJumpSpeed < jumpSpeed){
+				if(Input.GetKey(KeyCode.Space) && jumpHeldDownFor > 0){
+					jumpHeldDownFor -= Time.fixedDeltaTime;
+					jumpSpeed += Time.fixedDeltaTime * 20;
+				}
+
 				currentJumpSpeed += Time.fixedDeltaTime*40.0f;
 				tr.position += tr.up * currentJumpSpeed * Time.fixedDeltaTime;
 				
@@ -146,12 +155,16 @@ public class Movement : MonoBehaviour {
 			climbing = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)){	
+		if(Input.GetKeyDown(KeyCode.Space)){
 			if(onGround){
 				print ("jump");
 				onGround = false;
 				jump = true;
 			}
+		}
+		if(Input.GetKeyUp(KeyCode.Space)){
+			jumpHeldDownFor = 1;
+			jumpSpeed = 10;
 		}
 
 		for(int i = 0; i < directions.Length; i++)

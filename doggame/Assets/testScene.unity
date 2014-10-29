@@ -405,6 +405,7 @@ MonoBehaviour:
   accel: .00999999978
   directions: 00000000
   maxVel: .100000001
+  jumpHeldDownFor: 1
   climbing: 0
   tsb: 0
   tr: {fileID: 0}
@@ -412,7 +413,7 @@ MonoBehaviour:
   camera_transform: {fileID: 0}
   jump: 0
   currentJumpSpeed: 0
-  jumpSpeed: 20
+  jumpSpeed: 10
   onGround: 0
 --- !u!111 &213568855
 Animation:
