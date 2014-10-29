@@ -23,11 +23,12 @@ public class Interact : MonoBehaviour {
 
 		if (Input.GetButtonUp("Interact"))
 		{
-			if(holding != null){
+			if(holding){
 				holding.GetComponent<Transform>().parent = null;
 				holding = null;
-		}
-			else{
+			}
+			else
+			{
 	#if debugMode
 				Debug.Log ("G pressed, attempting to interact");
 	#endif
