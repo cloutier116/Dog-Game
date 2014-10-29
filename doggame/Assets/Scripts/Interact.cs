@@ -43,7 +43,7 @@ public class Interact : MonoBehaviour {
 						holding = hitColliders[i].gameObject;
 						Object Object_target = holding.GetComponent<Object>();
 						Object.type type =  Object_target.getType();
-	#if debugMode
+	#if debugMode1
 						Debug.Log ("type:" + type);
 	#endif
 						if(type == Object.type.TYPE_PICKUP){
@@ -51,7 +51,7 @@ public class Interact : MonoBehaviour {
 							Transform Transform_Target = Object_target.GetComponent<Transform>();
 							//Transform_Target.transform.position = Transform_Target.position + Transform_Target.forward;
 							Transform_Target.parent = myTransform;
-							Transform_Target.localPosition = new Vector3(0,0,1);
+							Transform_Target.localPosition = new Vector3(0,.65f,.6f);
 
 						}
 					}
