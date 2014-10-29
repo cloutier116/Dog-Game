@@ -10,14 +10,12 @@ public class Movement : MonoBehaviour {
 									//     forward, back, left, right
 	public float maxVel = 10f;
 
-	public float jumpHeldDownFor = 0.0f;
-
-	public float defaultJumpSpeed = 5.0f;
 
 	public float hangFactor = 1.5f;
-	public float jumpIncrease = 30.0f; 
 
 	public float topY;
+
+	public float jumpForce = 300f;
 
 	public bool climbing;
 	public float tsb = 0.0f;
@@ -25,11 +23,6 @@ public class Movement : MonoBehaviour {
 	public GameObject camera;
 	public Transform camera_transform;
 	public bool jump = false;
-
-	public float currentJumpSpeed = 0f;
-
-
-	public float jumpSpeed = 5f;
 
 	public bool onGround;
 	Vector3 cameraDirection;
@@ -107,28 +100,11 @@ public class Movement : MonoBehaviour {
 			if(jump){
 				//Debug.Log("JUMPING!!");
 				jump = false;
-				currentJumpSpeed = 3.0f;
+				//currentJumpSpeed = 3.0f;
+				rigidbody.AddForce(Vector3.up * jumpForce);
 			}
 
-			if(currentJumpSpeed < jumpSpeed){
-				if(Input.GetKey(KeyCode.Space) && jumpHeldDownFor > 0){
-					jumpHeldDownFor -= fdt;
-					jumpSpeed +=fdt * 10;
-				}
-
-				currentJumpSpeed += Time.fixedDeltaTime*jumpIncrease - currentJumpSpeed;
-				tr.position += tr.up * currentJumpSpeed * fdt;
-				topY = tr.position.y;
-			}
-			if(currentJumpSpeed >= jumpSpeed && currentJumpSpeed < jumpSpeed * hangFactor){
-				currentJumpSpeed += Time.fixedDeltaTime*jumpIncrease;
-				//tr.position += tr.up * 9.8f * fdt;
-				
-				Vector3 pos = tr.position;
-				pos.y = topY;
-				tr.position = pos;
-				
-			}
+	
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
 			if(walkDirection != Vector3.zero)
@@ -148,8 +124,6 @@ public class Movement : MonoBehaviour {
 				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
 					onGround = true;
 					
-					jumpHeldDownFor = 0.2f;
-					jumpSpeed = defaultJumpSpeed;
 					
 				}
 			}
@@ -178,7 +152,7 @@ public class Movement : MonoBehaviour {
 			climbing = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)){
+		if(Input.GetButtonDown("Jump")){
 			if(onGround){
 				print ("jump");
 				onGround = false;
@@ -204,11 +178,7 @@ public class Movement : MonoBehaviour {
 		else if (Input.GetAxis ("Horizontal") > 0)
 			directions [3] = true;
 
-		if (Input.GetButtonDown ("Jump"))
-		{
-			
-			velocity.y = 9.8f;
-		}
+		
 		if(Input.GetButtonDown("Bark"))
 		   print("bark");
 
