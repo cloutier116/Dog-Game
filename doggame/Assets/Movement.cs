@@ -24,6 +24,8 @@ public class Movement : MonoBehaviour {
 	public GameObject camera;
 	public Transform camera_transform;
 	public bool jump = false;
+	
+	public float heldDown = 0.0f;
 
 	public bool onGround;
 	public bool jumpUp;
@@ -126,8 +128,14 @@ public class Movement : MonoBehaviour {
 	
 
 			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
-			if(walkDirection != Vector3.zero)
-				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
+			if(walkDirection != Vector3.zero){
+				if(heldDown > 0.2f){
+					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
+				}
+				else{
+					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .05f);
+				}
+			}
 			tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
@@ -215,10 +223,23 @@ public class Movement : MonoBehaviour {
 			//if(velocity.x == 0)
 			//	cameraDirection = camera_transform.TransformDirection(Vector3.forward);
 		}
-		if (Input.GetAxis ("Horizontal") < 0)
+		if (Input.GetAxis ("Horizontal") < 0 && directions[2] == true){
 			directions [2] = true;
-		else if (Input.GetAxis ("Horizontal") > 0)
+			heldDown += Time.deltaTime;
+		}
+		else if(Input.GetAxis ("Horizontal") < 0){
+			directions [2] = true;
+		}
+		else if (Input.GetAxis ("Horizontal") > 0 && directions[3] == true){
 			directions [3] = true;
+			heldDown += Time.deltaTime;
+		}
+		else if(Input.GetAxis ("Horizontal") > 0){
+			directions[3] = true;
+		}
+		else{
+			heldDown = 0.0f;
+		}
 
 		
 		if(Input.GetButtonDown("Bark"))
