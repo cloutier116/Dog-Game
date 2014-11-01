@@ -41,6 +41,25 @@ public class CameraController : MonoBehaviour {
 	void FixedUpdate(){
 
 		if(frozen){
+			Vector3_targetPosition = Transform_target.position;
+			Quaternion_targetRotation = Transform_target.rotation;
+			float distance = Vector3.Distance(Vector3_targetPosition,tr.position);
+			distance += 0.5f;
+			
+			Quaternion currentRot = tr.rotation;
+			float diffInRotation = Mathf.Abs(currentRot.x - Quaternion_targetRotation.x) +
+				Mathf.Abs(currentRot.y - Quaternion_targetRotation.y) + 
+					Mathf.Abs(currentRot.z - Quaternion_targetRotation.z);
+			diffInRotation += 1.0f;
+			
+			Vector3 futurePosition = (Vector3_targetPosition - tr.position);
+			//print (futurePosition);
+			if(futurePosition.magnitude > .02)
+			{
+				futurePosition = futurePosition.normalized * 5;
+				tr.position = Vector3.Lerp (tr.position, tr.position + futurePosition, Time.deltaTime*distance * 0.2f);
+				tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion_targetRotation, Time.deltaTime * diffInRotation *2.0f);
+			}
 
 		}
 		else{
