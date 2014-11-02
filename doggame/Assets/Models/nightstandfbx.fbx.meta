@@ -23,6 +23,15 @@ ModelImporter:
     100034: pCube1
     100036: pCube2
     100038: pCube3
+    100040: drawer1
+    100042: drawer2
+    100044: drawers
+    100046: feet
+    100048: foot1
+    100050: foot2
+    100052: foot3
+    100054: foot4
+    100056: nightstand
     400000: group
     400002: group1
     400004: group10
@@ -43,6 +52,15 @@ ModelImporter:
     400034: pCube1
     400036: pCube2
     400038: pCube3
+    400040: drawer1
+    400042: drawer2
+    400044: drawers
+    400046: feet
+    400048: foot1
+    400050: foot2
+    400052: foot3
+    400054: foot4
+    400056: nightstand
     2300000: pasted__pCube2
     2300002: pasted__pCube2 1
     2300004: pasted__pCube2 2
@@ -50,6 +68,13 @@ ModelImporter:
     2300008: pCube1
     2300010: pCube2
     2300012: pCube3
+    2300014: drawer1
+    2300016: drawer2
+    2300018: foot1
+    2300020: foot2
+    2300022: foot3
+    2300024: foot4
+    2300026: nightstand
     3300000: pasted__pCube2
     3300002: pasted__pCube2 1
     3300004: pasted__pCube2 2
@@ -57,6 +82,13 @@ ModelImporter:
     3300008: pCube1
     3300010: pCube2
     3300012: pCube3
+    3300014: drawer1
+    3300016: drawer2
+    3300018: foot1
+    3300020: foot2
+    3300022: foot3
+    3300024: foot4
+    3300026: nightstand
     4300000: pCube1
     4300002: pCube2
     4300004: pasted__pCube2
@@ -64,6 +96,13 @@ ModelImporter:
     4300008: pasted__pCube2
     4300010: pCube3
     4300012: pasted__pCube3
+    4300014: nightstand
+    4300016: drawer1
+    4300018: drawer2
+    4300020: foot4
+    4300022: foot3
+    4300024: foot2
+    4300026: foot1
     9500000: //RootNode
   materials:
     importMaterials: 1

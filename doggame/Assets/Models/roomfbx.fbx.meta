@@ -38,6 +38,8 @@ ModelImporter:
     100064: transform7
     100066: transform8
     100068: transform9
+    100070: base_door
+    100072: pasted__base_door
     400000: building
     400002: building1
     400004: building2
@@ -73,12 +75,20 @@ ModelImporter:
     400064: transform7
     400066: transform8
     400068: transform9
+    400070: base_door
+    400072: pasted__base_door
     2300000: building6
     2300002: pasted__pCube1
+    2300004: base_door
+    2300006: pasted__base_door
     3300000: building6
     3300002: pasted__pCube1
+    3300004: base_door
+    3300006: pasted__base_door
     4300000: pasted__pCube1
     4300002: building6
+    4300004: base_door
+    4300006: pasted__base_door
     9500000: //RootNode
   materials:
     importMaterials: 1

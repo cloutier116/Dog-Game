@@ -10,6 +10,13 @@ ModelImporter:
     100008: pCube1
     100010: pCube2
     100012: pCube3
+    100014: back
+    100016: feet
+    100018: foot
+    100020: foot2
+    100022: foot3
+    100024: foot4
+    100026: seat
     400000: //RootNode
     400002: pasted__pCube3
     400004: pasted__pCube4
@@ -17,24 +24,49 @@ ModelImporter:
     400008: pCube1
     400010: pCube2
     400012: pCube3
+    400014: back
+    400016: feet
+    400018: foot
+    400020: foot2
+    400022: foot3
+    400024: foot4
+    400026: seat
     2300000: pasted__pCube3
     2300002: pasted__pCube4
     2300004: pasted__pCube5
     2300006: pCube1
     2300008: pCube2
     2300010: pCube3
+    2300012: back
+    2300014: foot
+    2300016: foot2
+    2300018: foot3
+    2300020: foot4
+    2300022: seat
     3300000: pasted__pCube3
     3300002: pasted__pCube4
     3300004: pasted__pCube5
     3300006: pCube1
     3300008: pCube2
     3300010: pCube3
+    3300012: back
+    3300014: foot
+    3300016: foot2
+    3300018: foot3
+    3300020: foot4
+    3300022: seat
     4300000: pCube1
     4300002: pCube2
     4300004: pCube3
     4300006: pasted__pCube3
     4300008: pasted__pCube4
     4300010: pasted__pCube5
+    4300012: back
+    4300014: foot4
+    4300016: foot3
+    4300018: foot2
+    4300020: foot
+    4300022: seat
     9500000: //RootNode
   materials:
     importMaterials: 1

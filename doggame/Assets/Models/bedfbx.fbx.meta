@@ -9,12 +9,14 @@ ModelImporter:
     100006: pasted__pCube3
     100008: pCube1
     100010: pCube2
+    100012: feet
     400000: //RootNode
     400002: pasted__pasted__pCube2
     400004: pasted__pCube2
     400006: pasted__pCube3
     400008: pCube1
     400010: pCube2
+    400012: feet
     2300000: pasted__pasted__pCube2
     2300002: pasted__pCube2
     2300004: pasted__pCube3
