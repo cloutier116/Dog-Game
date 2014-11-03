@@ -15,6 +15,9 @@ ModelImporter:
     100018: group1
     100020: group2
     100022: pCube5
+    100024: drawers
+    100026: dresser_object
+    100028: feet
     400000: drawer1
     400002: drawer2
     400004: drawer3
@@ -27,6 +30,9 @@ ModelImporter:
     400018: group1
     400020: group2
     400022: pCube5
+    400024: drawers
+    400026: dresser_object
+    400028: feet
     2300000: drawer1
     2300002: drawer2
     2300004: drawer3
@@ -36,6 +42,7 @@ ModelImporter:
     2300012: foot3
     2300014: foot4
     2300016: pCube5
+    2300018: dresser_object
     3300000: drawer1
     3300002: drawer2
     3300004: drawer3
@@ -45,6 +52,7 @@ ModelImporter:
     3300012: foot3
     3300014: foot4
     3300016: pCube5
+    3300018: dresser_object
     4300000: pCube5
     4300002: drawer1
     4300004: drawer2
@@ -54,6 +62,7 @@ ModelImporter:
     4300012: foot2
     4300014: foot3
     4300016: foot4
+    4300018: dresser_object
     9500000: //RootNode
   materials:
     importMaterials: 1
