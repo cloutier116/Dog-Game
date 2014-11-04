@@ -133,17 +133,30 @@ public class Movement : MonoBehaviour {
 					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
 				}
 				else{
-					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .05f);
+					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .1f);
 				}
 			}
-			tr.position = tr.position + walkDirection;
+
+			rigidbody.MovePosition(tr.position + walkDirection);
+			//tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
 
 		}
 		
 	}
-
+	void OnCollisionEnter(Collision other)
+	{
+		if(other.contacts.Length > 0)
+		{
+			foreach(ContactPoint contact in other.contacts)
+			{
+				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
+					rigidbody.AddForceAtPosition(new Vector3(10,10,10), contact.point);
+				}
+			}
+		}
+	}
 	void OnCollisionStay(Collision collision){
 		onGround = false;
 		if(collision.contacts.Length >0){
@@ -152,6 +165,11 @@ public class Movement : MonoBehaviour {
 					onGround = true;
 					
 					
+				}
+				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
+					Vector3 force = new Vector3( 0, -25, 0);
+					Debug.Log ("Force Applied force.x:" + force.x + " force.y:" + force.y + " force.z:" +force.z );
+					rigidbody.AddForceAtPosition(force, contact.point);
 				}
 			}
 		}
@@ -172,6 +190,8 @@ public class Movement : MonoBehaviour {
 
 	void getInput()
 	{
+
+		
 		tsb += Time.deltaTime;
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
 			fixedRotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z);

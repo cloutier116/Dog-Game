@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: a81d4153e28ed47408048e231ba5d866
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - idleAnimation: {fileID: 7400000, guid: 8d70e463bb43ae743a69bd5359471d11, type: 3}
+  - runAnimation: {instanceID: 0}
+  - jumpAnimation: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
