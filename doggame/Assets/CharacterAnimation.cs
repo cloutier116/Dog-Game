@@ -51,7 +51,8 @@ public class CharacterAnimation : MonoBehaviour {
 			}
 			else//idle
 			{
-				animation.Play ("idle");
+
+				animation.Play ();
 			}
 			if (true)//controller.isGrounded)
 			{
