@@ -151,7 +151,9 @@ public class Movement : MonoBehaviour {
 		{
 			foreach(ContactPoint contact in other.contacts)
 			{
-
+				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
+					rigidbody.AddForceAtPosition(new Vector3(10,10,10), contact.point);
+				}
 			}
 		}
 	}
@@ -163,6 +165,11 @@ public class Movement : MonoBehaviour {
 					onGround = true;
 					
 					
+				}
+				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
+					Vector3 force = new Vector3( 0, -25, 0);
+					Debug.Log ("Force Applied force.x:" + force.x + " force.y:" + force.y + " force.z:" +force.z );
+					rigidbody.AddForceAtPosition(force, contact.point);
 				}
 			}
 		}
@@ -183,6 +190,8 @@ public class Movement : MonoBehaviour {
 
 	void getInput()
 	{
+
+		
 		tsb += Time.deltaTime;
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
 			fixedRotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z);
