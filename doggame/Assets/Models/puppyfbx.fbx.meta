@@ -259,8 +259,9 @@ ModelImporter:
     4300038: LB_Up_Leg
     4300040: LB_B_Leg
     4300042: LB_Paw
-    7400000: Take 001
+    7400000: Jump
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Butt_Box
     13700002: Head_Box
     13700004: L_Ear
@@ -298,7 +299,267 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Jump
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Body_GRP
+        weight: 1
+      - path: Body_GRP/Butt_Box
+        weight: 1
+      - path: Body_GRP/Head_Box
+        weight: 1
+      - path: Body_GRP/Head_Box/L_Ear
+        weight: 1
+      - path: Body_GRP/Head_Box/Mouth_Jaw
+        weight: 1
+      - path: Body_GRP/Head_Box/Mouth_Upper
+        weight: 1
+      - path: Body_GRP/Head_Box/R_Ear
+        weight: 1
+      - path: Body_GRP/LB_Up_Leg
+        weight: 1
+      - path: Body_GRP/LB_Up_Leg/LB_B_Leg
+        weight: 1
+      - path: Body_GRP/LB_Up_Leg/LB_B_Leg/LB_Paw
+        weight: 1
+      - path: Body_GRP/LF_UP_Leg
+        weight: 1
+      - path: Body_GRP/LF_UP_Leg/LF_B_Leg
+        weight: 1
+      - path: Body_GRP/LF_UP_Leg/LF_B_Leg/LF_Paw
+        weight: 1
+      - path: Body_GRP/RB_Up_Leg
+        weight: 1
+      - path: Body_GRP/RB_Up_Leg/RB_B_Leg
+        weight: 1
+      - path: Body_GRP/RB_Up_Leg/RB_B_Leg/RB_Paw
+        weight: 1
+      - path: Body_GRP/RF_UP_Leg
+        weight: 1
+      - path: Body_GRP/RF_UP_Leg/RF_B_Leg
+        weight: 1
+      - path: Body_GRP/RF_UP_Leg/RF_B_Leg/RF_Paw
+        weight: 1
+      - path: Body_GRP/Tail_Base
+        weight: 1
+      - path: Body_GRP/Tail_Base/Tail_Mid
+        weight: 1
+      - path: Body_GRP/Tail_Base/Tail_Tip
+        weight: 1
+      - path: Body_GRP/Upper_body
+        weight: 1
+      - path: Master_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Hip_CNTRL
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP/L_TipToe_GRP
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP/L_TipToe_GRP/L_peel_heel_GrP
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP/L_TipToe_GRP/L_peel_heel_GrP/L_Ankle_IK
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP/L_TipToe_GRP/L_toe_tap_GRP
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP/L_TipToe_GRP/L_toe_tap_GRP/L_Midfoot_IK
+        weight: 1
+      - path: Master_CNTRL/LB_Foot_CNTRL/L_heelPivot_GRP/L_TipToe_GRP/L_toe_tap_GRP/L_Toe_IK
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP/LF_TipToe_GRP
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP/LF_TipToe_GRP/LF_peel_heel_GRP
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP/LF_TipToe_GRP/LF_peel_heel_GRP/LF_Ankle_IK
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP/LF_TipToe_GRP/LF_peel_heel_GRP/LF_toe_tap_GRP
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP/LF_TipToe_GRP/LF_peel_heel_GRP/LF_toe_tap_GRP/LF_Midfoot_IK
+        weight: 1
+      - path: Master_CNTRL/LF_Foot_CNTRL/LF_heelPivot_GRP/LF_TipToe_GRP/LF_peel_heel_GRP/LF_toe_tap_GRP/LF_Toe_IK
+        weight: 1
+      - path: Master_CNTRL/Neck_Base_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/Jaw_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/L_Ear_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/L_Ear_CNTRL/L_Ear_IK_GRP
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/L_Ear_CNTRL/L_Ear_IK_GRP/L_Ear_IK
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/R_Ear_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/R_Ear_CNTRL/R_Ear_IK_GRP
+        weight: 1
+      - path: Master_CNTRL/Neck_CNTRL/ot/R_Ear_CNTRL/R_Ear_IK_GRP/R_Ear_IK
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP/RB_TipToe_GRP
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP/RB_TipToe_GRP/RB_peel_heel_GRP
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP/RB_TipToe_GRP/RB_peel_heel_GRP/RB_Ankle_IK
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP/RB_TipToe_GRP/RB_peel_heel_GRP/RB_Ankle_IK/RB_toe_tap_GRP
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP/RB_TipToe_GRP/RB_peel_heel_GRP/RB_Ankle_IK/RB_toe_tap_GRP/RB_Midfoot_IK
+        weight: 1
+      - path: Master_CNTRL/RB_Foot_CNTRL/RB_heelPivot_GRP/RB_TipToe_GRP/RB_peel_heel_GRP/RB_Ankle_IK/RB_toe_tap_GRP/RB_Toe_IK
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP/FR_TipToe_GRP
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP/FR_TipToe_GRP/RF_peel_heel_GRP
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP/FR_TipToe_GRP/RF_peel_heel_GRP/FR_Ankle_IK
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP/FR_TipToe_GRP/RF_peel_heel_GRP/RF_toe_tap_GRP
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP/FR_TipToe_GRP/RF_peel_heel_GRP/RF_toe_tap_GRP/RF_Midfoot_IK
+        weight: 1
+      - path: Master_CNTRL/RF_Foot_CNTRL/RF_heelPivot_GRP/FR_TipToe_GRP/RF_peel_heel_GRP/RF_toe_tap_GRP/RF_Toe_IK
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipL_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipL_J/Leg_BL_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipL_J/Leg_BL_Top_J/Leg_BL_Knee_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipL_J/Leg_BL_Top_J/Leg_BL_Knee_J/Leg_BL_Ankle_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipL_J/Leg_BL_Top_J/Leg_BL_Knee_J/Leg_BL_Ankle_J/Paw_BL_mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipL_J/Leg_BL_Top_J/Leg_BL_Knee_J/Leg_BL_Ankle_J/Paw_BL_mid_J/PAw_BL_Toe_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipR_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipR_J/Leg_BR_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipR_J/Leg_BR_Top_J/Leg_BR_Knee_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipR_J/Leg_BR_Top_J/Leg_BR_Knee_J/Leg_BR_Ankle_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipR_J/Leg_BR_Top_J/Leg_BR_Knee_J/Leg_BR_Ankle_J/Paw_BR_mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/HipR_J/Leg_BR_Top_J/Leg_BR_Knee_J/Leg_BR_Ankle_J/Paw_BR_mid_J/PAw_BR_Toe_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HL_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HL_J/Ear_L_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HL_J/Ear_L_Top_J/Ear_L_Mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HL_J/Ear_L_Top_J/Ear_L_Mid_J/Ear_L_End_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HR_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HR_J/Ear_R_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HR_J/Ear_R_Top_J/Ear_R_Mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Head_T_J/HR_J/Ear_R_Top_J/Ear_R_Mid_J/Ear_R_End_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Jaw_Base_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Neck_Top_J/Head_J/Jaw_Base_J/Mouth_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_L_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_L_J/Leg_FL_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_L_J/Leg_FL_Top_J/Leg_FL_Mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_L_J/Leg_FL_Top_J/Leg_FL_Mid_J/Leg_FL_Ankle_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_L_J/Leg_FL_Top_J/Leg_FL_Mid_J/Leg_FL_Ankle_J/Paw_FL_Mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_L_J/Leg_FL_Top_J/Leg_FL_Mid_J/Leg_FL_Ankle_J/Paw_FL_Mid_J/Paw_FL_Toe_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_R_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_R_J/Reg_FR_Top_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_R_J/Reg_FR_Top_J/Reg_FR_Mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_R_J/Reg_FR_Top_J/Reg_FR_Mid_J/Reg_FR_Ankle_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_R_J/Reg_FR_Top_J/Reg_FR_Mid_J/Reg_FR_Ankle_J/Paw_FR_Mid_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Spine_mid_J/Neck_Base_J/Shld_R_J/Reg_FR_Top_J/Reg_FR_Mid_J/Reg_FR_Ankle_J/Paw_FR_Mid_J/Paw_FR_Toe_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Tail_Base_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Tail_Base_J/Tail_Mid1_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Tail_Base_J/Tail_Mid1_J/Tail_Mid2_J
+        weight: 1
+      - path: Master_CNTRL/Skeleton_GRP/Hip_J/Tail_Base_J/Tail_Mid1_J/Tail_Mid2_J/Tail_End_J
+        weight: 1
+      - path: Master_CNTRL/Spine_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Tail_CNTRL
+        weight: 1
+      - path: Master_CNTRL/Tail_CNTRL/Tail_IK_GRP
+        weight: 1
+      - path: Master_CNTRL/Tail_CNTRL/Tail_IK_GRP/Tail_IK
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -334,6 +595,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 

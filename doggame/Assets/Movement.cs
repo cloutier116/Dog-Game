@@ -133,17 +133,28 @@ public class Movement : MonoBehaviour {
 					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
 				}
 				else{
-					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .05f);
+					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .1f);
 				}
 			}
-			tr.position = tr.position + walkDirection;
+
+			rigidbody.MovePosition(tr.position + walkDirection);
+			//tr.position = tr.position + walkDirection;
 			//tr.Translate (velocity.magnitude * camera_transform.forward);
 
 
 		}
 		
 	}
+	void OnCollisionEnter(Collision other)
+	{
+		if(other.contacts.Length > 0)
+		{
+			foreach(ContactPoint contact in other.contacts)
+			{
 
+			}
+		}
+	}
 	void OnCollisionStay(Collision collision){
 		onGround = false;
 		if(collision.contacts.Length >0){
