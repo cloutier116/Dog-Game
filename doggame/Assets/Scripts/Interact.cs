@@ -15,6 +15,8 @@ public class Interact : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(holding)
+			holding.GetComponent<Transform>().localPosition = new Vector3(0,.65f,.65f); 
 		if (Input.GetButtonUp("Bark")) 
 		{
 			//bark
@@ -52,8 +54,9 @@ public class Interact : MonoBehaviour {
 							Transform Transform_Target = Object_target.GetComponent<Transform>();
 							//Transform_Target.transform.position = Transform_Target.position + Transform_Target.forward;
 							Transform_Target.parent = myTransform;
-							Transform_Target.localPosition = new Vector3(0,.65f,.6f);
 							Object_target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+							Transform_Target.localPosition = new Vector3(0,.65f,.6f);
+
 						}
 					}
 					i++;
