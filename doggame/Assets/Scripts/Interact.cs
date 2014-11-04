@@ -25,6 +25,7 @@ public class Interact : MonoBehaviour {
 		{
 			if(holding){
 				holding.GetComponent<Transform>().parent = null;
+				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 				holding = null;
 			}
 			else
@@ -52,7 +53,7 @@ public class Interact : MonoBehaviour {
 							//Transform_Target.transform.position = Transform_Target.position + Transform_Target.forward;
 							Transform_Target.parent = myTransform;
 							Transform_Target.localPosition = new Vector3(0,.65f,.6f);
-
+							Object_target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 						}
 					}
 					i++;
