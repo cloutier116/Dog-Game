@@ -43,11 +43,12 @@ public class CharacterAnimation : MonoBehaviour {
 		else{
 			if(_characterState == CharacterState.Jumping)
 			{
-				animation.Play ("jump_pose");
+				animation.Play ("UpJump");
 			}
 			else if (_characterState == CharacterState.Running)
 			{
-				animation.Play ("run");
+				Debug.Log("PLAYING A SHITTY ANIMATION");
+				animation.Play ("Walking");
 			}
 			else//idle
 			{
