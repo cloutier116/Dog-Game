@@ -1,30 +1,13 @@
 fileFormatVersion: 2
-guid: 9fb44c1f09cb54d6aaccf083f91c2c3c
+guid: 20c7e489a76e9415a8f379f936c4a53d
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: door 1
-    100002: //RootNode
-    100004: frame
-    100006: handle
-    100008: pasted__handle
-    400000: door 1
-    400002: //RootNode
-    400004: frame
-    400006: handle
-    400008: pasted__handle
-    2300000: door 1
-    2300002: frame
-    2300004: handle
-    2300006: pasted__handle
-    3300000: door 1
-    3300002: frame
-    3300004: handle
-    3300006: pasted__handle
-    4300000: door
-    4300002: handle
-    4300004: frame
-    4300006: pasted__handle
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder1
     9500000: //RootNode
   materials:
     importMaterials: 1
