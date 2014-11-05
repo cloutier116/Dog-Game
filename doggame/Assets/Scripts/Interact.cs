@@ -15,7 +15,7 @@ public class Interact : MonoBehaviour {
 		myTransform = GetComponent<Transform> ();
 	}
 
-	void bark(){
+	void Bark(){
 		int choiceBark = Random.Range(1,4);
 		switch(choiceBark){
 		case 1:
@@ -36,7 +36,7 @@ public class Interact : MonoBehaviour {
 			holding.GetComponent<Transform>().localPosition = new Vector3(0,.65f,.65f); 
 		if (Input.GetButtonUp("Bark")) 
 		{
-			bark();
+			Bark();
 			//bark
 		}
 
