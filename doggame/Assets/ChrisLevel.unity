@@ -1788,7 +1788,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: d44e895197077a3428525c0a025f2316, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d44e895197077a3428525c0a025f2316, type: 2}
@@ -1972,6 +1972,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 667047623}
+  - {fileID: 1144728065}
   - {fileID: 2102698551}
   - {fileID: 1425320931}
   m_Father: {fileID: 0}
@@ -2024,7 +2025,7 @@ MonoBehaviour:
   jumpForce: 350
   jumpingTime: 3
   climbing: 0
-  tsb: 0
+  down: 0
   tr: {fileID: 0}
   camera: {fileID: 815824696}
   camera_transform: {fileID: 0}
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   heldDown: 0
   onGround: 0
   jumpUp: 0
+  walkDirection: {x: 0, y: 0, z: 0}
 --- !u!111 &213568855
 Animation:
   m_ObjectHideFlags: 0
@@ -8656,6 +8658,7 @@ GameObject:
   - 124: {fileID: 815824698}
   - 81: {fileID: 815824697}
   - 114: {fileID: 815824702}
+  - 65: {fileID: 815824703}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8739,6 +8742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809d5f42944b06e45af71cbb0a9678f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 213568850}
+  controller_movement: {fileID: 0}
   GameObject_target: {fileID: 667047622}
   Movement_target: {fileID: 0}
   Transform_target: {fileID: 0}
@@ -8749,6 +8754,20 @@ MonoBehaviour:
   Transform_climbingTarget: {fileID: 2102698551}
   Vector3_climbingTargetPosition: {x: 0, y: 0, z: 0}
   Quaternion_climbingTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+  frontTarget: {fileID: 0}
+  frontTargetTr: {fileID: 0}
+--- !u!65 &815824703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 815824696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &822952188
 GameObject:
   m_ObjectHideFlags: 0
@@ -12310,6 +12329,33 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .0799999982
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1144728064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1144728065}
+  m_Layer: 0
+  m_Name: Front Target
+  m_TagString: FrontCameraTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1144728065
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144728064}
+  m_LocalRotation: {x: .170277044, y: -1.60541433e-07, z: 2.77416525e-08, w: .985396266}
+  m_LocalPosition: {x: 0, y: 2.7493999, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 213568851}
+  m_RootOrder: 1
 --- !u!1 &1147978640
 GameObject:
   m_ObjectHideFlags: 0
@@ -14899,7 +14945,7 @@ Transform:
   - {fileID: 492487160}
   - {fileID: 2106433582}
   m_Father: {fileID: 213568851}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!111 &1425320932
 Animation:
   m_ObjectHideFlags: 0
@@ -15210,7 +15256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400146, guid: 8d70e463bb43ae743a69bd5359471d11, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 100146, guid: 8d70e463bb43ae743a69bd5359471d11, type: 3}
       propertyPath: m_TagString
@@ -21059,7 +21105,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 213568851}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &2105897373
 GameObject:
   m_ObjectHideFlags: 0
