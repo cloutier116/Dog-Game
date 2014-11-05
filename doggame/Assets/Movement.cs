@@ -133,7 +133,7 @@ public class Movement : MonoBehaviour {
 					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
 				}
 				else{
-					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .1f);
+					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .05f);
 				}
 			}
 

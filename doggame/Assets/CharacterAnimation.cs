@@ -8,7 +8,7 @@ public class CharacterAnimation : MonoBehaviour {
 	public AnimationClip idleAnimation;
 	public AnimationClip runAnimation;
 	public AnimationClip jumpAnimation;
-
+	private bool hasJumped = false;
 	public CharacterState _characterState;
 	CharacterController controller;
 	public enum CharacterState{
@@ -36,23 +36,26 @@ public class CharacterAnimation : MonoBehaviour {
 	}
 	
 	void FixedUpdate(){
-		
+		Vector3 velocity = this.gameObject.GetComponentInParent<Movement> ().velocity;
 		if (_characterState == CharacterState.Climbing) 
 		{
 		}
 		else{
 			if(_characterState == CharacterState.Jumping)
 			{
-				animation.Play ("jump_pose");
+				if (!hasJumped)
+					animation.Play ("Jump!");
+				hasJumped = true;
 			}
 			else if (_characterState == CharacterState.Running)
 			{
-				animation.Play ("run");
+				Debug.Log("PLAYING A SHITTY ANIMATION");
+				animation.Play ("Walking");
 			}
-			else//idle
+			else if (velocity == Vector3.zero)//idle
 			{
-
-				animation.Play ();
+				hasJumped = false;
+				animation.Play ("Idle");
 			}
 			if (true)//controller.isGrounded)
 			{
