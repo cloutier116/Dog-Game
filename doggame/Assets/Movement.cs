@@ -155,8 +155,8 @@ public class Movement : MonoBehaviour {
 				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
 					Debug.Log ("EXPLOSIONS");
 					rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
-					
-					other.rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
+					if(other.rigidbody)
+						other.rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
 				}
 			}
 		}
