@@ -16,6 +16,10 @@ ModelImporter:
     100020: drawer3
     100022: drawer4
     100024: drawers
+    100026: counter
+    100028: faucet
+    100030: left1
+    100032: ovenhandle
     400000: //RootNode
     400002: pasted__pCube1
     400004: cabinet5
@@ -29,6 +33,10 @@ ModelImporter:
     400020: drawer3
     400022: drawer4
     400024: drawers
+    400026: counter
+    400028: faucet
+    400030: left1
+    400032: ovenhandle
     2300000: pasted__pCube1
     2300002: cabinet5
     2300004: cabinet6
@@ -40,6 +48,8 @@ ModelImporter:
     2300016: drawer2
     2300018: drawer3
     2300020: drawer4
+    2300022: faucet
+    2300024: ovenhandle
     3300000: pasted__pCube1
     3300002: cabinet5
     3300004: cabinet6
@@ -51,6 +61,8 @@ ModelImporter:
     3300016: drawer2
     3300018: drawer3
     3300020: drawer4
+    3300022: faucet
+    3300024: ovenhandle
     4300000: pasted__pCube1
     4300002: drawer1
     4300004: drawer2
@@ -62,6 +74,8 @@ ModelImporter:
     4300016: cabinet8
     4300018: counter_base
     4300020: countertop
+    4300022: faucet
+    4300024: ovenhandle
     9500000: //RootNode
   materials:
     importMaterials: 1
