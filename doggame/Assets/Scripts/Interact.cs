@@ -5,7 +5,9 @@ using System.Collections;
 public class Interact : MonoBehaviour {
 	private Transform myTransform;
 	public GameObject holding; //gameobject the player is currently holding
-	public float radius = 1.0f;
+	public float radius = 1.0f; 
+	public float timeSinceBark = 0.0f;
+	public float nextBark = 30.0f;
 	public AudioClip bark;
 	public AudioClip bark1;
 	public AudioClip bark2;
@@ -15,7 +17,9 @@ public class Interact : MonoBehaviour {
 		myTransform = GetComponent<Transform> ();
 	}
 
-	void bark(){
+	void Bark(){
+		timeSinceBark = 0.0f;
+		nextBark = Random.Range(10.0f,30.0f);
 		int choiceBark = Random.Range(1,4);
 		switch(choiceBark){
 		case 1:
@@ -32,11 +36,12 @@ public class Interact : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		timeSinceBark += Time.fixedDeltaTime;
 		if(holding)
 			holding.GetComponent<Transform>().localPosition = new Vector3(0,.65f,.65f); 
 		if (Input.GetButtonUp("Bark")) 
 		{
-			bark();
+			Bark();
 			//bark
 		}
 
@@ -79,6 +84,10 @@ public class Interact : MonoBehaviour {
 					i++;
 				}
 			}
+		}
+
+		if(timeSinceBark > nextBark){
+			Bark ();
 		}
 	}
 }
