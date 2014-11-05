@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour {
 	public float jumpForce = 300f;
 	public float jumpingTime = 3.0f;
 
-	public bool climbing;
+	public bool climbing = false;
 	public float tsb = 0.0f;
 	public Transform tr;
 	public GameObject camera;
@@ -168,7 +168,6 @@ public class Movement : MonoBehaviour {
 				}
 				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
 					Vector3 force = new Vector3( 0, -25, 0);
-					Debug.Log ("Force Applied force.x:" + force.x + " force.y:" + force.y + " force.z:" +force.z );
 					rigidbody.AddForceAtPosition(force, contact.point);
 				}
 			}
