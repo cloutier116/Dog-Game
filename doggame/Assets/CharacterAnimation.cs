@@ -49,7 +49,7 @@ public class CharacterAnimation : MonoBehaviour {
 			}
 			else if (_characterState == CharacterState.Running)
 			{
-				Debug.Log("PLAYING A SHITTY ANIMATION");
+//				Debug.Log("PLAYING A SHITTY ANIMATION");
 				animation.Play ("Walking");
 			}
 			else if (velocity == Vector3.zero)//idle
