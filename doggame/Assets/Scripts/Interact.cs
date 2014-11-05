@@ -14,6 +14,21 @@ public class Interact : MonoBehaviour {
 	void Start () {
 		myTransform = GetComponent<Transform> ();
 	}
+
+	void bark(){
+		int choiceBark = Random.Range(1,4);
+		switch(choiceBark){
+		case 1:
+			audio.PlayOneShot(bark, Random.Range(0.2f,0.9f));
+			break;
+		case 2:
+			audio.PlayOneShot(bark1, Random.Range(0.2f,0.9f));
+			break;
+		case 3:
+			audio.PlayOneShot(bark2, Random.Range(0.2f,0.9f));
+			break;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,18 +36,7 @@ public class Interact : MonoBehaviour {
 			holding.GetComponent<Transform>().localPosition = new Vector3(0,.65f,.65f); 
 		if (Input.GetButtonUp("Bark")) 
 		{
-			int choiceBark = Random.Range(1,4);
-			switch(choiceBark){
-			case 1:
-				audio.PlayOneShot(bark, Random.Range(0.2f,0.9f));
-				break;
-			case 2:
-				audio.PlayOneShot(bark1, Random.Range(0.2f,0.9f));
-				break;
-			case 3:
-				audio.PlayOneShot(bark2, Random.Range(0.2f,0.9f));
-				break;
-			}
+			bark();
 			//bark
 		}
 
