@@ -153,7 +153,10 @@ public class Movement : MonoBehaviour {
 			foreach(ContactPoint contact in other.contacts)
 			{
 				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
-					rigidbody.AddForceAtPosition(new Vector3(10,10,10), contact.point);
+					Debug.Log ("EXPLOSIONS");
+					rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
+					
+					other.rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
 				}
 			}
 		}
@@ -168,8 +171,12 @@ public class Movement : MonoBehaviour {
 					
 				}
 				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
-					Vector3 force = new Vector3( 0, -25, 0);
-					rigidbody.AddForceAtPosition(force, contact.point);
+					rigidbody.AddExplosionForce(150.0f*Time.fixedDeltaTime,contact.point,1.0f);
+					if(collision.rigidbody != null){
+						collision.rigidbody.AddExplosionForce(5.0f,contact.point,1.0f);
+					}
+						//Vector3 force = new Vector3( 0, -25, 0);
+					//rigidbody.AddForceAtPosition(force, contact.point);
 				}
 			}
 		}

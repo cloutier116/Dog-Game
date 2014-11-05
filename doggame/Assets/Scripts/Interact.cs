@@ -5,7 +5,9 @@ using System.Collections;
 public class Interact : MonoBehaviour {
 	private Transform myTransform;
 	public GameObject holding; //gameobject the player is currently holding
-	public float radius = 1.0f;
+	public float radius = 1.0f; 
+	public float timeSinceBark = 0.0f;
+	public float nextBark = 30.0f;
 	public AudioClip bark;
 	public AudioClip bark1;
 	public AudioClip bark2;
@@ -14,25 +16,32 @@ public class Interact : MonoBehaviour {
 	void Start () {
 		myTransform = GetComponent<Transform> ();
 	}
+
+	void Bark(){
+		timeSinceBark = 0.0f;
+		nextBark = Random.Range(10.0f,30.0f);
+		int choiceBark = Random.Range(1,4);
+		switch(choiceBark){
+		case 1:
+			audio.PlayOneShot(bark, Random.Range(0.2f,0.9f));
+			break;
+		case 2:
+			audio.PlayOneShot(bark1, Random.Range(0.2f,0.9f));
+			break;
+		case 3:
+			audio.PlayOneShot(bark2, Random.Range(0.2f,0.9f));
+			break;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
+		timeSinceBark += Time.fixedDeltaTime;
 		if(holding)
 			holding.GetComponent<Transform>().localPosition = new Vector3(0,.65f,.65f); 
 		if (Input.GetButtonUp("Bark")) 
 		{
-			int choiceBark = Random.Range(1,4);
-			switch(choiceBark){
-			case 1:
-				audio.PlayOneShot(bark, Random.Range(0.2f,0.9f));
-				break;
-			case 2:
-				audio.PlayOneShot(bark1, Random.Range(0.2f,0.9f));
-				break;
-			case 3:
-				audio.PlayOneShot(bark2, Random.Range(0.2f,0.9f));
-				break;
-			}
+			Bark();
 			//bark
 		}
 
@@ -75,6 +84,10 @@ public class Interact : MonoBehaviour {
 					i++;
 				}
 			}
+		}
+
+		if(timeSinceBark > nextBark){
+			Bark ();
 		}
 	}
 }
