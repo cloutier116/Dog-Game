@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour {
 	public float jumpingTime = 3.0f;
 
 	public bool climbing = false;
-	public float tsb = 0.0f;
+	public bool down;
 	public Transform tr;
 	public GameObject camera;
 	public Transform camera_transform;
@@ -31,6 +31,7 @@ public class Movement : MonoBehaviour {
 	public bool jumpUp;
 	bool pressed = false;
 	Vector3 cameraDirection;
+	public Vector3 walkDirection;
 
 
 
@@ -127,7 +128,7 @@ public class Movement : MonoBehaviour {
 			
 	
 
-			Vector3 walkDirection = (velocity.x * right + velocity.z * forward);
+			walkDirection = (velocity.x * right + velocity.z * forward);
 			if(walkDirection != Vector3.zero){
 				if(heldDown > 0.2f){
 					tr.rotation = Quaternion.Slerp(tr.rotation, Quaternion.LookRotation(walkDirection), .15f);
@@ -154,8 +155,8 @@ public class Movement : MonoBehaviour {
 				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
 					Debug.Log ("EXPLOSIONS");
 					rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
-					
-					other.rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
+					if(other.rigidbody)
+						other.rigidbody.AddExplosionForce(200.0f / other.contacts.Length,contact.point,1.0f);
 				}
 			}
 		}
@@ -198,7 +199,6 @@ public class Movement : MonoBehaviour {
 	{
 
 		
-		tsb += Time.deltaTime;
 		if (Input.GetKeyDown (KeyCode.C)) { //enable climbing
 			fixedRotation = Quaternion.Euler(tr.rotation.x, tr.rotation.y, tr.rotation.z);
 			Debug.Log ("C Down");
@@ -241,13 +241,18 @@ public class Movement : MonoBehaviour {
 		cameraDirection = Vector3.zero;
 
 		if (Input.GetAxis ("Vertical") > 0)
-			directions [0] = true;
-		else if(Input.GetAxis("Vertical") < 0 && tsb > 1.0f)
 		{
-			tsb = 0.0f;
+			directions [0] = true;
+			down = false;
+		}
+		else if(Input.GetAxis("Vertical") < 0)
+		{
 			directions [1] = true;
-			//if(velocity.x == 0)
-			//	cameraDirection = camera_transform.TransformDirection(Vector3.forward);
+			down = true;
+		}
+		else
+		{
+			down = false;
 		}
 		if (Input.GetAxis ("Horizontal") < 0 && directions[2] == true){
 			directions [2] = true;

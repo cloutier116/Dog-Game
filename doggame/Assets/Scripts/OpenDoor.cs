@@ -4,6 +4,7 @@ using System.Collections;
 public class OpenDoor : MonoBehaviour {
 
 	Transform tr;
+	public AudioClip ac;
 	bool open = false;
 	int angle = 360;
 
@@ -16,6 +17,7 @@ public class OpenDoor : MonoBehaviour {
 	void Update () {
 		if(open)
 		{
+			if(angle == 360){audio.PlayOneShot(ac);}
 			angle--;
 			tr.parent.RotateAround (tr.parent.position, Vector3.up, -1);
 			if (angle < 270)
