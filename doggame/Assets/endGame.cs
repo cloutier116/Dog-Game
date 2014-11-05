@@ -31,5 +31,8 @@ public class endGame : MonoBehaviour {
 			door = false;
 			
 		}
+		if(!door && !audio.isPlaying){
+			Application.LoadLevel(0);
+		}
 	}
 }
