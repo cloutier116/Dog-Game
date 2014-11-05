@@ -18,7 +18,6 @@ public class OpenDoor : MonoBehaviour {
 		{
 			angle--;
 			tr.parent.RotateAround (tr.parent.position, Vector3.up, -1);
-			print (angle);
 			if (angle < 270)
 				enabled = false;
 		}
