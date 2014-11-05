@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 601d59e9ba270c54da91bc7625759178
+guid: 895361d4a06434aafa4d62fcd57561ba
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
@@ -8,15 +8,15 @@ ModelImporter:
     100004: neck 1
     100006: neck2
     100008: neck3
-    100010: sink
-    100012: //RootNode
+    100010: //RootNode
+    100012: sink
     400000: faucet
     400002: neck
     400004: neck 1
     400006: neck2
     400008: neck3
-    400010: sink
-    400012: //RootNode
+    400010: //RootNode
+    400012: sink
     2300000: faucet
     2300002: neck 1
     2300004: neck2
