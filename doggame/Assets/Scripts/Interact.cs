@@ -52,7 +52,7 @@ public class Interact : MonoBehaviour {
 			if(holding){
 				holding.GetComponent<Collider>().enabled =true;
 				holding.GetComponent<Transform>().parent = null;
-//				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+				holding.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
 				holding = null;
 			}
 			else
@@ -81,7 +81,7 @@ public class Interact : MonoBehaviour {
 							Transform Transform_Target = Object_target.GetComponent<Transform>();
 							//Transform_Target.transform.position = Transform_Target.position + Transform_Target.forward*100;
 							Transform_Target.parent = myTransform;
-							//Object_target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+							Object_target.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
 							//Transform_Target.localPosition = new Vector3(0,.65f,2.6f);
 							Transform_Target.GetComponent<Collider>().enabled =false;
 
