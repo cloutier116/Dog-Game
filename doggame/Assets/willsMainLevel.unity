@@ -1519,15 +1519,17 @@ MonoBehaviour:
   topY: 0
   jumpForce: 350
   jumpingTime: 3
+  dogShake: {fileID: 8300000, guid: cbff4c0e416bef34599ef8bdd5ab5022, type: 3}
   climbing: 0
-  tsb: 0
+  down: 0
   tr: {fileID: 0}
   camera: {fileID: 1933477404}
   camera_transform: {fileID: 0}
   jump: 0
   heldDown: 0
-  onGround: 0
+  onGround: 1
   jumpUp: 0
+  walkDirection: {x: 0, y: 0, z: 0}
 --- !u!82 &74443266
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26176,6 +26178,7 @@ GameObject:
   - 4: {fileID: 1737918007}
   - 65: {fileID: 1737918009}
   - 114: {fileID: 1737918008}
+  - 82: {fileID: 1737918010}
   m_Layer: 0
   m_Name: doorTrigger
   m_TagString: Untagged
@@ -26206,6 +26209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a93fe6a5c9ffe44488a03c1841c50eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 8300000, guid: 839c29003a691f3499a999499689416f, type: 3}
 --- !u!65 &1737918009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26218,6 +26222,64 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .5, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &1737918010
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1737918006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1743197293
 GameObject:
   m_ObjectHideFlags: 0
@@ -26442,6 +26504,22 @@ Prefab:
     - target: {fileID: 100092, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 100114, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_TagString
+      value: CameraTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 100226, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: m_TagString
+      value: FrontCameraTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: dogShake
+      value: 
+      objectReference: {fileID: 8300000, guid: cbff4c0e416bef34599ef8bdd5ab5022, type: 3}
+    - target: {fileID: 11400002, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
+      propertyPath: onGround
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
@@ -29200,6 +29278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809d5f42944b06e45af71cbb0a9678f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 74443260}
+  controller_movement: {fileID: 74443265}
   GameObject_target: {fileID: 1037550628}
   Movement_target: {fileID: 0}
   Transform_target: {fileID: 0}
@@ -29210,6 +29290,8 @@ MonoBehaviour:
   Transform_climbingTarget: {fileID: 78951273}
   Vector3_climbingTargetPosition: {x: 0, y: 0, z: 0}
   Quaternion_climbingTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+  frontTarget: {fileID: 0}
+  frontTargetTr: {fileID: 0}
 --- !u!81 &1933477406
 AudioListener:
   m_ObjectHideFlags: 0
@@ -30867,7 +30949,7 @@ GameObject:
   - 4: {fileID: 2035510602}
   m_Layer: 0
   m_Name: Body_GRP
-  m_TagString: Untagged
+  m_TagString: FrontCameraTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

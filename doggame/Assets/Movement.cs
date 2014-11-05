@@ -18,6 +18,8 @@ public class Movement : MonoBehaviour {
 	public float jumpForce = 300f;
 	public float jumpingTime = 3.0f;
 
+	public AudioClip dogShake;
+
 	public bool climbing = false;
 	public bool down;
 	public Transform tr;
@@ -166,6 +168,10 @@ public class Movement : MonoBehaviour {
 		if(collision.contacts.Length >0){
 			foreach(ContactPoint contact in collision.contacts){//ContactPoint contact = collision.contacts[0];
 				if(Vector3.Dot(contact.normal, Vector3.up) > 0.5){
+					if(onGround == false){
+						//audio.PlayOneShot(dogShake);
+						onGround = true;
+					}
 					onGround = true;
 					
 					
