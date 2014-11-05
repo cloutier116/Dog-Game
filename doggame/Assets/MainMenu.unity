@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f355e0bc9755e944ea68d62756eb310c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 2800000, guid: 67917661f4ddacd4081ba2b005c606a4, type: 3}
+  image: {fileID: 2800000, guid: 1a0f59eb0beeb6d40a8a079a444215db, type: 3}
 --- !u!81 &889874576
 AudioListener:
   m_ObjectHideFlags: 0
