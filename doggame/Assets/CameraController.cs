@@ -4,17 +4,17 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	public GameObject GameObject_target;
-	private Movement Movement_target;
-	private Transform Transform_target;
-	private Vector3 Vector3_targetPosition;
-	private Quaternion Quaternion_targetRotation;
+	public Movement Movement_target;
+	public Transform Transform_target;
+	public Vector3 Vector3_targetPosition;
+	public Quaternion Quaternion_targetRotation;
 
 	public bool frozen = false;
 	
 	public GameObject GameObject_climbingTarget;
-	private Transform Transform_climbingTarget;
-	private Vector3 Vector3_climbingTargetPosition;
-	private Quaternion Quaternion_climbingTargetRotation;
+	public Transform Transform_climbingTarget;
+	public Vector3 Vector3_climbingTargetPosition;
+	public Quaternion Quaternion_climbingTargetRotation;
 	
 
 	Transform tr;
@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour {
 		tr = GetComponent<Transform> ();
 		GameObject_target = GameObject.FindGameObjectWithTag("CameraTarget");
 		Transform_target = GameObject_target.GetComponent<Transform>();
-		Movement_target = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+		Movement_target = GameObject.FindGameObjectWithTag("MasterPlayer").GetComponent<Movement>();
 
 		
 		GameObject_climbingTarget = GameObject.FindGameObjectWithTag("ClimbingCameraTarget");

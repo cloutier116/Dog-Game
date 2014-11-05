@@ -7,6 +7,8 @@ public class Interact : MonoBehaviour {
 	public GameObject holding; //gameobject the player is currently holding
 	public float radius = 1.0f;
 	public AudioClip bark;
+	public AudioClip bark1;
+	public AudioClip bark2;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +21,19 @@ public class Interact : MonoBehaviour {
 			holding.GetComponent<Transform>().localPosition = new Vector3(0,.65f,.65f); 
 		if (Input.GetButtonUp("Bark")) 
 		{
+			int choiceBark = Random.Range(1,4);
+			switch(choiceBark){
+			case 1:
+				audio.PlayOneShot(bark, Random.Range(0.2f,0.9f));
+				break;
+			case 2:
+				audio.PlayOneShot(bark1, Random.Range(0.2f,0.9f));
+				break;
+			case 3:
+				audio.PlayOneShot(bark2, Random.Range(0.2f,0.9f));
+				break;
+			}
 			//bark
-			audio.PlayOneShot(bark, 0.7f);
 		}
 
 		if (Input.GetButtonUp("Interact"))
