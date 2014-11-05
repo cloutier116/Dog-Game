@@ -1,41 +1,15 @@
 fileFormatVersion: 2
-guid: 3fff1a064e2b542d4be735a261210d10
+guid: 73424c6688d19684f90a759200c68d1c
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: bed
-    100002: dogbed
-    100004: //RootNode
-    100006: feet
-    100008: leg
-    100010: leg2
-    100012: leg3
-    100014: leg4
-    100016: persp1
-    400000: bed
-    400002: dogbed
-    400004: //RootNode
-    400006: feet
-    400008: leg
-    400010: leg2
-    400012: leg3
-    400014: leg4
-    400016: persp1
-    2300000: bed
-    2300002: leg
-    2300004: leg2
-    2300006: leg3
-    2300008: leg4
-    3300000: bed
-    3300002: leg
-    3300004: leg2
-    3300006: leg3
-    3300008: leg4
-    4300000: bed
-    4300002: leg
-    4300004: leg2
-    4300006: leg3
-    4300008: leg4
+    100000: //RootNode
+    100002: pCube1
+    400000: //RootNode
+    400002: pCube1
+    2300000: pCube1
+    3300000: pCube1
+    4300000: pCube1
     9500000: //RootNode
   materials:
     importMaterials: 1

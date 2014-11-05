@@ -1,41 +1,37 @@
 fileFormatVersion: 2
-guid: 3fff1a064e2b542d4be735a261210d10
+guid: 1af6d3a4e519b4183a46482d51e52960
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: bed
-    100002: dogbed
-    100004: //RootNode
-    100006: feet
-    100008: leg
-    100010: leg2
-    100012: leg3
-    100014: leg4
-    100016: persp1
-    400000: bed
-    400002: dogbed
-    400004: //RootNode
-    400006: feet
-    400008: leg
-    400010: leg2
-    400012: leg3
-    400014: leg4
-    400016: persp1
-    2300000: bed
-    2300002: leg
-    2300004: leg2
-    2300006: leg3
-    2300008: leg4
-    3300000: bed
-    3300002: leg
-    3300004: leg2
-    3300006: leg3
-    3300008: leg4
-    4300000: bed
-    4300002: leg
-    4300004: leg2
-    4300006: leg3
-    4300008: leg4
+    100000: //RootNode
+    100002: dresser_object
+    100004: feet
+    100006: foot1
+    100008: foot2
+    100010: foot3
+    100012: foot4
+    400000: //RootNode
+    400002: dresser_object
+    400004: feet
+    400006: foot1
+    400008: foot2
+    400010: foot3
+    400012: foot4
+    2300000: dresser_object
+    2300002: foot1
+    2300004: foot2
+    2300006: foot3
+    2300008: foot4
+    3300000: dresser_object
+    3300002: foot1
+    3300004: foot2
+    3300006: foot3
+    3300008: foot4
+    4300000: foot1
+    4300002: foot2
+    4300004: foot3
+    4300006: foot4
+    4300008: dresser_object
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -56,7 +52,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
