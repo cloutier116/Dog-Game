@@ -1428,6 +1428,7 @@ GameObject:
   - 114: {fileID: 74443265}
   - 54: {fileID: 74443264}
   - 114: {fileID: 74443263}
+  - 114: {fileID: 74443262}
   m_Layer: 0
   m_Name: 3rd Person Controller
   m_TagString: MasterPlayer
@@ -1450,6 +1451,21 @@ Transform:
   - {fileID: 820460986}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &74443262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 74443260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddf9d501985bf14449f870a625824ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whimper: {fileID: 8300000, guid: 70e2bcba8643c7943839e965a0fdbc66, type: 3}
+  doorClose: {fileID: 8300000, guid: 6816a4081b739604cbbc4f4da229e977, type: 3}
+  playedDoor: 0
+  timePassed: 0
 --- !u!114 &74443263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,6 +1601,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holding: {fileID: 0}
   radius: 5
+  timeSinceBark: 0
+  nextBark: 30
   bark: {fileID: 8300000, guid: 930ff970ad2bd8042baac3d2c9aa3cb3, type: 3}
   bark1: {fileID: 8300000, guid: 69f08d183aeb20d47b2750b674f133e8, type: 3}
   bark2: {fileID: 8300000, guid: f76747ee1deb6ab4a84fc37e682c4b91, type: 3}
