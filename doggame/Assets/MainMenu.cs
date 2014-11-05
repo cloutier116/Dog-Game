@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour {
 
 	void OnGUI(){
 		
-		if(GUI.Button(new Rect(Screen.width/2-400,Screen.height/2-400,800,800), image)){
+		if(GUI.Button(new Rect(Screen.width/2-Screen.width/8,Screen.height/2-Screen.height/8,Screen.width/4,Screen.height/4), image)){
 			Application.LoadLevel(1);
 		}
 	}
