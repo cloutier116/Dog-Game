@@ -1608,7 +1608,7 @@ MonoBehaviour:
   bark: {fileID: 8300000, guid: 930ff970ad2bd8042baac3d2c9aa3cb3, type: 3}
   bark1: {fileID: 8300000, guid: 69f08d183aeb20d47b2750b674f133e8, type: 3}
   bark2: {fileID: 8300000, guid: f76747ee1deb6ab4a84fc37e682c4b91, type: 3}
-  squeak: {fileID: 8300000, guid: fef94ff3cc395284e8c93cfb8da818f0, type: 3}
+  squeak: {fileID: 8300000, guid: 87c42911576f5488d860129fa1c5add6, type: 3}
 --- !u!111 &74443268
 Animation:
   m_ObjectHideFlags: 0
@@ -26407,7 +26407,7 @@ Prefab:
     - target: {fileID: 11400004, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
       propertyPath: squeak
       value: 
-      objectReference: {fileID: 8300000, guid: fef94ff3cc395284e8c93cfb8da818f0, type: 3}
+      objectReference: {fileID: 8300000, guid: 87c42911576f5488d860129fa1c5add6, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2314ce3a3eecf4816bad3c9eca4de2e1, type: 2}
   m_RootGameObject: {fileID: 74443260}
