@@ -6190,6 +6190,14 @@ Prefab:
       propertyPath: m_Name
       value: livingroom Door
       objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d44e895197077a3428525c0a025f2316, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0192620009
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: d44e895197077a3428525c0a025f2316, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.05808413
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d44e895197077a3428525c0a025f2316, type: 2}
   m_RootGameObject: {fileID: 1642858435}
@@ -8877,7 +8885,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 490274121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.972289979, y: 2.72979999, z: -1.57009995}
+  m_LocalPosition: {x: -.972289979, y: 2.33669996, z: -1.57009995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2049590077}
@@ -8893,6 +8901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a93fe6a5c9ffe44488a03c1841c50eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
 --- !u!65 &490274124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8903,7 +8912,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .5, y: 2, z: 3}
+  m_Size: {x: .5, y: 2.5, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &495120032
 GameObject:
@@ -11501,6 +11510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a93fe6a5c9ffe44488a03c1841c50eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ac: {fileID: 0}
 --- !u!65 &660428591
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35066,8 +35076,8 @@ Transform:
   m_PrefabInternal: {fileID: 322104166}
   m_GameObject: {fileID: 1982493787}
   m_LocalRotation: {x: -0, y: -.707106829, z: 0, w: .707106829}
-  m_LocalPosition: {x: -0, y: .0199999996, z: 0}
-  m_LocalScale: {x: 1.68315637, y: 1, z: 1.03308082}
+  m_LocalPosition: {x: -0, y: .0192620009, z: 0}
+  m_LocalScale: {x: 1.68315637, y: 1.05808413, z: 1.03308082}
   m_Children: []
   m_Father: {fileID: 1642858436}
   m_RootOrder: 0
