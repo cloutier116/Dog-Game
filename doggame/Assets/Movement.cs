@@ -167,8 +167,9 @@ public class Movement : MonoBehaviour {
 					
 				}
 				if(onGround == false && !(Vector3.Dot(contact.normal, Vector3.up) > 0.5)){
-					Vector3 force = new Vector3( 0, -25, 0);
-					rigidbody.AddForceAtPosition(force, contact.point);
+					rigidbody.AddExplosionForce(5.0f,contact.point,1.0f);
+					//Vector3 force = new Vector3( 0, -25, 0);
+					//rigidbody.AddForceAtPosition(force, contact.point);
 				}
 			}
 		}
