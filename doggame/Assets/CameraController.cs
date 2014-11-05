@@ -20,7 +20,6 @@ public class CameraController : MonoBehaviour {
 	public Quaternion Quaternion_climbingTargetRotation;
 	public GameObject frontTarget;
 	public Transform frontTargetTr;
-	Transform dogTr;
 
 	Transform tr;
 	
@@ -30,7 +29,6 @@ public class CameraController : MonoBehaviour {
 		tr = GetComponent<Transform> ();
 		GameObject_target = GameObject.FindGameObjectWithTag("CameraTarget");
 		Transform_target = GameObject_target.GetComponent<Transform>();
-		dogTr = GameObject.FindGameObjectWithTag ("FrontCameraTarget").GetComponent<Transform>();
 		Movement_target = GameObject.FindGameObjectWithTag("MasterPlayer").GetComponent<Movement>();
 		controller_movement = controller.GetComponent<Movement> ();
 
